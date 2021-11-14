@@ -1,0 +1,194 @@
+
+.orderSummary{
+    margin: 1rem auto;
+    background-color: white;
+    width: 82rem;
+    height: auto;
+    padding: 1rem;
+    max-width: 85%;
+    border-color: white;
+    border-radius: 15px;
+    
+}
+
+
+
+.title{
+    text-align: center;
+    margin: 0 0 2rem 0;
+}
+
+.orderItem{
+    max-width: 40rem;
+  height: 10rem;
+  margin: 1rem auto ;
+  padding: 1rem;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  border: 1px solid rgb(16,16,66);
+  background-color: white;
+  border-radius: 10px;
+}
+
+.imageDiv {
+    margin-right: 2rem;
+  }
+
+  .image {
+    width: 6rem;
+    height: 6rem;
+  }
+
+  .detailsDiv {
+    text-align: left;
+    margin-right: 1rem;
+    position: relative;
+    top: -1.25rem;
+  }
+
+  .orderItemsDiv{
+    margin: 1rem;
+    padding: 1rem;
+    width: 90%;
+    border-top: 1px solid black;
+  }
+
+  .cartItemTitle {
+    width: 20rem;
+    overflow: hidden;
+    font-size: 125%;
+    font-weight: bold;
+  }
+  
+  .clear {
+    float: none;
+  }
+  
+  .itemQuantitySpan {
+    margin: 0 0.25rem;
+    padding: 0.3rem;
+    font-weight: bold;
+  }
+
+  .orderAddressDiv{
+      margin: 1rem;
+      padding: 1rem;
+      width: 90%;
+     
+  }
+
+  .addressDetailsDiv{
+      position: relative;
+      left: 20rem;
+  }
+
+  .addressLabel{
+      font-weight: bold;
+     
+  }
+
+  .amountDiv{
+      text-align: center;
+      width: 90%;
+      padding: 0.2rem 1rem;
+      margin: 0.2rem 1rem;
+      border-bottom: 1px solid black;
+  }
+
+  .amount{
+      color: red;
+  }
+
+  .actionsDiv{
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      left: -5rem;
+      
+  }
+
+  .cancelButton{
+      border: 1px solid red;
+      padding: 1rem;
+      font-size: 120%;
+      background-color: red;
+      margin-right: 1rem;
+      text-decoration: none;
+      color: white;
+      margin: 2rem;
+      border-radius: 10px;
+  }
+
+  .cancelButton:hover{
+      background-color: rgb(209, 66, 66);
+  }
+
+  .placeOrderButton{
+    border: 1px solid green;
+    padding: 1rem;
+    font-size: 120%;
+    background-color: green;
+    text-decoration: none;
+      color: white;
+      border-radius: 10px;
+  }
+
+  .placeOrderButton:hover{
+      background-color: rgb(107, 212, 107);
+  }
+
+  .successDiv{
+    width: 50rem;
+    margin: 2rem auto;
+    height: auto;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid rgb(16,16,66);
+    border-radius: 10px;
+  }
+
+  .successMsg{
+    color: green;
+  }
+
+  .continueShopping{
+    border: 1px solid rgb(201, 138, 23);
+    border-radius: 5px;
+    padding: 1rem;
+    text-decoration: none;
+    background-color: rgb(23, 79, 201);
+    color: white;
+  }
+
+  .successActionDiv{
+    margin: 2rem;
+  }
+
+  .continueShopping:hover{
+    background-color: rgb(202, 166, 100);
+  }
+
+  .sending{
+    text-align: center;
+    font-style: italic;
+    font-size: 125%;
+    font-weight: bold;
+    color: rgb(26, 26, 95);
+  }
+
+  .error{
+    text-align: center;
+    color: red;
+    border: 1px solid red;
+    padding: 0.5rem;
+  }
+
+  .loaderDiv{
+    text-align: center;
+}
+
+.loaderDivText{
+    color: black;
+}

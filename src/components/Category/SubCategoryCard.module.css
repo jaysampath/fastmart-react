@@ -1,0 +1,35 @@
+
+.subCategoryCard{
+
+    width: 20rem;
+    height: 18em;
+    border: 1.5px solid rgb(16,16,66);
+    background-color: white;
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(204, 174, 41, 0.2);
+    border-radius: 8px;
+    overflow:hidden;
+    text-align: center;
+}
+
+.imageDiv{
+    height: 12rem;
+    width: 18rem;
+    padding: 1rem;
+}
+
+.detailDiv{
+    height: 2rem;
+    width: 18rem;
+}
+
+.image{
+    height: 10rem;
+    width: 16rem;
+}
+
+.imageLink{
+    text-decoration: none;
+}

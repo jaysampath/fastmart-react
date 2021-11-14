@@ -1,0 +1,30 @@
+.itemCard{
+    
+    width: 20rem;
+    height: 18em;
+    border: 1.8px solid #39397c;
+    background-color: white;
+    display: inline-block;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0 1px 4px rgba(204, 174, 41, 0.2);
+    border-radius: 8px;
+    overflow:hidden;
+    text-align: center;
+}
+
+.image{
+    height: 10rem;
+}
+
+.itemCard:hover{
+    border-color: #d35996;
+}
+
+.detail{
+    height: 5rem;
+}
+
+.imageLink{
+    text-decoration: none;
+}

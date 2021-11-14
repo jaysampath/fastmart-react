@@ -1,0 +1,54 @@
+.userOrdersPage{
+   margin: 2rem auto;
+   padding: 1rem;
+   background-color: white;
+   border: 1px solid white;
+   width: 72rem;
+   height: auto;
+   border-radius: 10px;
+}
+
+.pageTitle{
+    text-align: center;
+}
+
+.orderDiv{
+    margin: 1rem auto;
+    width: 60rem;
+    padding: 1rem;
+}
+
+.order{
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.orderTitle{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-weight: bold;
+}
+
+.orderItemDiv{
+    width: 50rem;
+    height: 8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    margin-left: 3rem;
+    padding: 1rem;
+}
+
+.orderItemImg{
+    width: 6rem;
+    height: 6rem;
+}
+
+.loaderDiv{
+    text-align: center;
+    margin-top: 1rem;
+}

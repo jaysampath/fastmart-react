@@ -1,0 +1,48 @@
+    
+.searchFeild{
+    width: 15rem;
+    height: 1.8rem;
+    margin: 0.35rem 0 0.35rem 0.35rem;
+    background-color: antiquewhite;
+    border-radius: 10px;
+    background-color: white;
+    text-align: left;
+    font-style: italic;
+}
+
+.searchButton{
+    font-size: small;
+    height: 1.8rem;
+    margin-top: 0.4rem;
+    padding: 0.25rem;
+    border-color: #2C0D00;
+    background-color: #cf79a4;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.searchButton:hover{
+    background-color: gray;
+}
+
+.searchDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+.searchIcon{
+    width: 1.8rem;
+    height: 1.75rem;
+    padding: 0.2rem;
+    border: 1px solid black;
+    position: relative;
+    top: 0.6rem;
+    background-color: #d35996;
+    border-radius: 10px;
+}
+
+.searchIcon:hover{
+    background-color: azure;
+}
+

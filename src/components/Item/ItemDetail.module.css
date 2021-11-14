@@ -1,0 +1,85 @@
+.itemDetail{
+    margin: 1rem auto;
+    max-width: 100rem;
+    width: 95%;
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid white;
+    border-radius: 15px;
+    height: auto;
+}
+
+.imageDiv{
+    float: left;
+    padding: 3rem;
+    position: relative;
+    top:-1rem;
+    left: 2rem;
+}
+
+.inStock{
+    color: green;
+    font-style: italic;
+}
+
+.outOfStock{
+    color: red;
+    font-style: italic;
+}
+
+.image{
+    width: 25rem;
+    height: 25rem;
+
+}
+
+.detailsDiv{
+    position: relative;
+    top: -1rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.clear{
+    float:none;
+}
+
+.mainDiv{
+    height: 32rem;
+}
+
+.star{
+    color: gold;
+    font-size: 23px;
+}
+
+.buyNowLink{
+    list-style: none;
+    text-decoration: none;
+   
+}
+
+.loaderDiv{
+    text-align: center;
+}
+
+.addToCartButton{
+    background-color: rgb(35, 35, 112);
+    color: white;
+    margin-right: 1rem;
+}
+
+.buyNowButton{
+    background-color: rgb(32, 100, 131);
+    color: white;
+    border-color: rgb(32, 100, 131);
+}
+
+.buyNowButton:hover{
+    background-color:rgb(241, 219, 93) ;
+    color: black;
+    border-color: rgb(133, 113, 2);
+}
+.addToCartButton:hover{
+    background-color:#d33182 ;
+}

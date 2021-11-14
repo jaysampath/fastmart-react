@@ -1,0 +1,39 @@
+.nav{
+    height: 2.5rem;
+    width: auto;
+    border: 1px solid #343377;
+    background-color: #39397c;
+    padding: 0 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font: inherit;
+    font-size: small;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .link{
+    text-decoration: none;
+    color: white;
+  }
+
+  
+  .nav li {
+    font-size: 50%; 
+    margin-left: 1.5rem;
+    font-size: 1.1rem;
+    border: 1px solid #272730;
+    border-radius: 10px;
+    padding: 0.1rem  0.5rem;
+  }
+
+  .nav li:hover{
+    border-color: white;
+  }
