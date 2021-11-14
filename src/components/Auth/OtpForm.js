@@ -31,7 +31,12 @@ const OtpForm = (props) => {
     const generateOtp = async () => {
       setIsGeneratingOtp(true);
       const response = await fetch(
-        `${ generateOtpLink+ email}`
+        `${ generateOtpLink+ email}`,
+        {
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
       if (!response.ok) {
         throw new Error(
@@ -77,6 +82,7 @@ const OtpForm = (props) => {
       }),
       headers: {
         "Content-type": "application/json",
+        "Access-Control-Allow-Origin":"*"
       },
     })
       .then((response) => {
@@ -115,7 +121,11 @@ const OtpForm = (props) => {
     event.preventDefault();
     //console.log("enetered otp:" + enteredOtp);
     setIsValidatingOtp(true);
-    fetch(`${validateOtpLink+ email}/${enteredOtp}`)
+    fetch(`${validateOtpLink+ email}/${enteredOtp}` ,{
+      headers:{
+        "Access-Control-Allow-Origin":"*"
+      }
+    })
       .then((response) => response.json())
       .then((data) => {
         // console.log(data);

@@ -23,7 +23,11 @@ const ItemAllReviews = () => {
     useEffect(()=>{
         const fetchAllReviews = async() => {
             setIsLoading(true);
-            const response = await fetch(`${itemAllReviewsLink+ itemId}`);
+            const response = await fetch(`${itemAllReviewsLink+ itemId}` ,{
+                headers:{
+                    "Access-Control-Allow-Origin":"*"
+                }
+            });
             if(!response.ok){
                 throw new Error("not able to fetch item reviews");
             }

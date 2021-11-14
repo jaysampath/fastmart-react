@@ -7,7 +7,12 @@ export const FetchCartData = (loggedInUser) => {
   return async (dispatch) => {
     const fetchCart = async () => {
       const response = await fetch(
-        `${ fetchUserCartLink +loggedInUser}`
+        `${ fetchUserCartLink +loggedInUser}`,
+        {
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
 
       if (!response.ok) {
@@ -57,6 +62,7 @@ export const addItemToCart = (itemId, itemQuantity, userEmail) => {
           }),
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin":"*"
           },
         }
       );
@@ -102,6 +108,9 @@ export const addItemQuantityInCart = (loggedInUser, itemId) => {
         `${addItemQuantityInCartLink + loggedInUser}/${itemId}`,
         {
           method: "POST",
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
         }
       );
 
@@ -143,6 +152,9 @@ export const reduceItemQuantityInCart = (loggedInUser, itemId) => {
         `${reduceItemQuantityInCartLink + loggedInUser}/${itemId}`,
         {
           method: "POST",
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
         }
       );
 
@@ -184,6 +196,9 @@ export const deleteItemFromCart = (loggedInUser, itemId) => {
         `${ deleteItemFromCartLink + loggedInUser}/${itemId}`,
         {
           method: "POST",
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
         }
       );
 

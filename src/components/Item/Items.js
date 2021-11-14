@@ -13,7 +13,11 @@ const Items = (props) => {
     setIsLoading(true);
 
     const fetchItems = async () => {
-      const responce = await fetch(allItemsLink);
+      const responce = await fetch(allItemsLink, {
+        headers:{
+          "Access-Control-Allow-Origin":"*"
+        }
+      });
       if (!responce.ok) {
         throw new Error(
           "Something went wrong while fetching Items. Please try again after some time."

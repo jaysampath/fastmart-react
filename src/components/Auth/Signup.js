@@ -48,7 +48,11 @@ const Signup = (props) => {
     }
     setError(null);
 
-    fetch(`${ checkExistingUserLink+ emailInput}`)
+    fetch(`${ checkExistingUserLink+ emailInput}`,{
+      headers:{
+        "Access-Control-Allow-Origin":"*"
+      }
+    })
     .then(response=>response.json())
     .then(data=> {
       //console.log(data);

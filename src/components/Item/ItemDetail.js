@@ -30,7 +30,11 @@ const ItemDetail = (props) => {
     setIsLoading(true);
     const fetchItemById = async () => {
       const response = await fetch(
-        `${itemDetailLink+ itemId}`
+        `${itemDetailLink+ itemId}`,{
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
 
       if (!response.ok) {

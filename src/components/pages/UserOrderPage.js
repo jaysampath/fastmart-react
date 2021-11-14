@@ -19,7 +19,11 @@ const UserOrderPage = () => {
       }
       setIsLoading(true);
       const response = await fetch(
-        `${ userOrdersLink +loggedInUser}`
+        `${ userOrdersLink +loggedInUser}`,{
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
 
       if (!response.ok) {

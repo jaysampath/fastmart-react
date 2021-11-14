@@ -66,6 +66,7 @@ const OrderSummary = (props) => {
       }),
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*"
       },
     })
       .then((response) => {

@@ -20,7 +20,11 @@ const ItemTopReviews = (props) => {
       }
       setIsLoading(true);
       const response = await fetch(
-        `${itemTopReviewsLink+ itemId}`
+        `${itemTopReviewsLink+ itemId}`,{
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
       if (!response.ok) {
         throw new Error("Something went wrong. Top Reviews are not loaded");

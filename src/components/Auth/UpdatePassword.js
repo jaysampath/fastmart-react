@@ -37,7 +37,11 @@ const UpdatePassword = () => {
     }
     setError(null);
     setIsUpdating(true);
-    fetch(`${updatePasswordLink+ email}/${passwordInput}`)
+    fetch(`${updatePasswordLink+ email}/${passwordInput}`,{
+      headers:{
+        "Access-Control-Allow-Origin":"*"
+      }
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error(

@@ -26,7 +26,11 @@ const SearchResults = (props) => {
         return;
       }
       const response = await fetch(
-        `${searchResultsLink + searchText}`
+        `${searchResultsLink + searchText}`,{
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
       if (!response.ok) {
         throw new Error("Not able to search, pls try again after sometime");

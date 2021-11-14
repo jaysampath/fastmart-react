@@ -22,7 +22,11 @@ const ItemsBySubCategories = (props) => {
     setIsLoading(true);
     const fetchSubCategoryItems = async () => {
       const response = await fetch(
-        `${ItemsBySubCategoriesLink+ categoryName}/${subCategoryName}`
+        `${ItemsBySubCategoriesLink+ categoryName}/${subCategoryName}`,{
+          headers:{
+            "Access-Control-Allow-Origin":"*"
+          }
+        }
       );
       if (!response.ok) {
         throw new Error(
