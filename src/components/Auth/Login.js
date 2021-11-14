@@ -39,9 +39,9 @@ const Login = (props) => {
       },
     })
       .then((responce) => { 
-        if(!responce.ok){
-          throw new Error("failed to login. please try again after sometime")
-        }
+        // if(!responce.ok){
+        //   throw new Error("failed to login. please try again after sometime")
+        // }
         return responce.json()
        })
       .then((data) => {
@@ -56,9 +56,17 @@ const Login = (props) => {
         if (status === 202) {
           setError(null);
           setSuccessMsg(message);
-          authCtx.login(emailInput);
-          //window.location.href = "http://localhost:3000";
-          history.push("/");
+          const timer = setTimeout(()=>{
+             setSuccessMsg(null);
+
+             authCtx.login(emailInput);
+             history.push("/");
+
+             clearTimeout(timer);
+          },1000)
+          // authCtx.login(emailInput);
+          // //window.location.href = "http://localhost:3000";
+          // history.push("/");
         }
       })
       .catch((error) => {

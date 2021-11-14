@@ -4,10 +4,23 @@
     height: 1.8rem;
     margin: 0.35rem 0 0.35rem 0.35rem;
     background-color: antiquewhite;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     background-color: white;
     text-align: left;
     font-style: italic;
+}
+
+.submitButton{
+    padding: 0;
+    border: none;
+    margin: 0;
+}
+
+.submitButton:hover{
+    background-color: rgb(57,57,124);
+    padding: 0;
+    margin: 0;
+    border: none;
 }
 
 .searchButton{
@@ -17,13 +30,14 @@
     padding: 0.25rem;
     border-color: #2C0D00;
     background-color: #cf79a4;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     color: white;
     text-decoration: none;
 }
 
 .searchButton:hover{
     background-color: gray;
+    
 }
 
 .searchDiv{
@@ -39,7 +53,7 @@
     position: relative;
     top: 0.6rem;
     background-color: #d35996;
-    border-radius: 10px;
+    /* border-radius: 10px; */
 }
 
 .searchIcon:hover{
