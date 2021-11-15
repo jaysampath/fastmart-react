@@ -1,4 +1,4 @@
-const baseUrl = "https://fastmart-mongo-http.herokuapp.com";
+const baseUrl = "http://ec2-65-1-64-123.ap-south-1.compute.amazonaws.com:8080";
 
 export const checkExistingUserLink = baseUrl+ "/user/check/";
 
