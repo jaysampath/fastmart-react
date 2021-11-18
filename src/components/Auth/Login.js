@@ -57,17 +57,17 @@ const Login = (props) => {
         if (status === 202) {
           setError(null);
           setSuccessMsg(message);
+          //authCtx.login(emailInput);
           const timer = setTimeout(()=>{
-             setSuccessMsg(null);
+            setSuccessMsg(null);
 
-             authCtx.login(emailInput);
-             history.push("/");
+            authCtx.login(emailInput);
+            history.push("/");
 
-             clearTimeout(timer);
-          },1000)
-          // authCtx.login(emailInput);
-          // //window.location.href = "http://localhost:3000";
-          // history.push("/");
+            clearTimeout(timer);
+         },1000)
+          //window.location.href = "http://localhost:3000";
+          //history.push("/");
         }
       })
       .catch((error) => {

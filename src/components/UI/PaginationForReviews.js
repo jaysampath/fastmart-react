@@ -3,14 +3,12 @@ import { useState } from "react";
 import classes from "./PaginationForReviews.module.css";
 
 const PaginationForReviews = ({ data, pageLimit, dataLimit }) => {
-//   const [numPages] = useState(
-//     Math.round(data.length / dataLimit) === 0
-//       ? 5
-//       : Math.round(data.length / dataLimit)
-//   );
-const [numPages] = useState(pageLimit);
+
+   const pageLimitNum = pageLimit*dataLimit===data.length ? pageLimit : pageLimit+1 ;
+
+const [numPages] = useState(pageLimitNum);
   //console.log("numpages: ",numPages);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(pageLimit);
 
   const goToNextPage = () => {
     setCurrentPage((page) => page + 1);

@@ -1,6 +1,6 @@
-import {  useState } from "react";
+import { useState } from "react";
 import classes from "./Signup.module.css";
-import { Link,  useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { checkExistingUserLink } from "../../url/Url";
 
 const Signup = (props) => {
@@ -27,8 +27,6 @@ const Signup = (props) => {
     setConfirmPasswordInput(event.target.value);
   };
 
- 
-
   const submitHandler = (event) => {
     event.preventDefault();
     //console.log(emailInput, usernameInput, passwordInput, confirmPasswordInput);
@@ -46,48 +44,52 @@ const Signup = (props) => {
       setError("password and confirm password aren't equal");
       return;
     }
+
+    if (passwordInput.length<8) {
+      setError(
+        "please check your password. It should be atleast 8 chars long"
+      );
+      return;
+    }
     setError(null);
 
-    fetch(`${ checkExistingUserLink+ emailInput}`,{
-      headers:{
-        "Access-Control-Allow-Origin":"*"
-      }
+    fetch(`${checkExistingUserLink + emailInput}`, {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
     })
-    .then(response=>response.json())
-    .then(data=> {
-      //console.log(data);
-      if(data.status===406){
-        setError(data.message);
-        setSuccessMsg(null);
-      }
-      if(data.status===202){
-        history.push({
-          pathname:"/otp",
-          state:{
-            email : emailInput,
-            password: passwordInput,
-            username:usernameInput,
-            action:"Signup email Verification",
-            description:"verify your email",
-          }
-        })
-         
-      }
-    })
-    .catch(error=>{
-      setError(error.message);
-    })
-
+      .then((response) => response.json())
+      .then((data) => {
+        //console.log(data);
+        if (data.status === 406) {
+          setError(data.message);
+          setSuccessMsg(null);
+        }
+        if (data.status === 202) {
+          history.push({
+            pathname: "/otp",
+            state: {
+              email: emailInput,
+              password: passwordInput,
+              username: usernameInput,
+              action: "Signup email Verification",
+              description: "verify your email",
+            },
+          });
+        }
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
 
   return (
     <div className={classes.signupPage}>
-      
       <div className={classes.formDiv}>
-      <h1 className={classes.title}> FastMart </h1>
-      <p className={classes.description}> Welcome! </p>
-      {error ? <p className={classes.error}>{error}</p> : ""}
-      {successMsg && <p className={classes.success}>{successMsg}</p>}
+        <h1 className={classes.title}> FastMart </h1>
+        <p className={classes.description}> Welcome! </p>
+        {error ? <p className={classes.error}>{error}</p> : ""}
+        {successMsg && <p className={classes.success}>{successMsg}</p>}
         <form onSubmit={submitHandler}>
           <div className={classes.input}>
             <label htmlFor="email">Email</label>

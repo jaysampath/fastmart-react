@@ -13,7 +13,7 @@ const Items = (props) => {
     setIsLoading(true);
 
     const fetchItems = async () => {
-      const responce = await fetch(allItemsLink, {
+      const responce = await fetch(allItemsLink,{
         headers:{
           "Access-Control-Allow-Origin":"*"
         }
@@ -64,7 +64,7 @@ const Items = (props) => {
 
       {fetchedItems.length > 0 ? (
         <>
-          <Pagination data={fetchedItems} pageLimit={5} dataLimit={12} />
+          <Pagination data={fetchedItems} pageLimit={Math.round(fetchedItems.length/9)} dataLimit={9} />
         </>
       ) : (
         <h1>No Items to display</h1>

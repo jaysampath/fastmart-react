@@ -31,8 +31,7 @@ const OtpForm = (props) => {
     const generateOtp = async () => {
       setIsGeneratingOtp(true);
       const response = await fetch(
-        `${ generateOtpLink+ email}`,
-        {
+        `${ generateOtpLink+ email}`,{
           headers:{
             "Access-Control-Allow-Origin":"*"
           }
@@ -121,7 +120,7 @@ const OtpForm = (props) => {
     event.preventDefault();
     //console.log("enetered otp:" + enteredOtp);
     setIsValidatingOtp(true);
-    fetch(`${validateOtpLink+ email}/${enteredOtp}` ,{
+    fetch(`${validateOtpLink+ email}/${enteredOtp}`,{
       headers:{
         "Access-Control-Allow-Origin":"*"
       }

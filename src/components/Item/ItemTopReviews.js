@@ -21,9 +21,7 @@ const ItemTopReviews = (props) => {
       setIsLoading(true);
       const response = await fetch(
         `${itemTopReviewsLink+ itemId}`,{
-          headers:{
-            "Access-Control-Allow-Origin":"*"
-          }
+          "Access-Control-Allow-Origin":"*"
         }
       );
       if (!response.ok) {
@@ -69,8 +67,8 @@ const ItemTopReviews = (props) => {
 
   if (itemNumRatings === 0) {
     return (
-      <div className={classes.noReviews}>
-        <p>no reviews yet.</p>
+      <div className={classes.actions}>
+        <p className={classes.noReviewsText} >no reviews yet.</p>
         {showAddReview && (
           <AddNewReview itemId={itemId} onHide={hideReviewHandler} />
         )}

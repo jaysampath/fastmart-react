@@ -1,10 +1,10 @@
 .button {
   cursor: pointer;
   font: inherit;
-  border: none;
-  background-color: #89a1ac;;
+  border: 1px solid white;
+  background-color: rgb(16,16,66);
   color: white;
-  padding: 0.4rem 1.5rem;
+  padding: 0.3rem 1.5rem;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -15,42 +15,35 @@
 
 .button:hover,
 .button:active {
-  background-color: #d35996;
+  background-color: rgb(6, 6, 39);
 }
 
 .icon {
   width: 1.35rem;
   height: 1.35rem;
-  margin-right: 0.5rem;
+  margin-right: 0.3rem;
 }
 
-.badge {
-  /* background-color: #c01e41;  */
-  border: 1px solid white ;
-  padding: 0.15rem 0.40rem;
-  border-radius:15px; 
-  margin-left: 0.5rem;
-  font-weight: bold;
-  text-align: center;
-
+.badge{
+  padding: 0.2rem;
+  
 }
 
 .badgeNum{
-  position: relative;
-  top: -0.1rem;
-  font-size:1rem ;
-  margin: 0;
-  padding: 0;
+  padding: 0.1rem 0.2rem;
+  color:rgb(240,136,4);
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: black;
+  margin-left: 0.1rem;
 }
+
 
 .yourCart{
   font-size: 1rem;
 }
 
-.button:hover .badge,
-.button:active .badge {
-  background-color: #101042;
-}
+
 
 .bump {
   animation: bump 300ms ease-out;

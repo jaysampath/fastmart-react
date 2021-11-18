@@ -15,6 +15,7 @@ const Categories = (props) => {
           >
             All
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
         <li>
           <Link
@@ -28,6 +29,7 @@ const Categories = (props) => {
           >
             Electronics
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
         <li>
           <Link
@@ -41,6 +43,7 @@ const Categories = (props) => {
           >
             Mobiles
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
         <li>
           <Link
@@ -54,6 +57,7 @@ const Categories = (props) => {
           >
             Home Appliances
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
         <li>
           <Link
@@ -67,6 +71,7 @@ const Categories = (props) => {
           >
             Beauty
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
         <li>
           <Link
@@ -80,6 +85,7 @@ const Categories = (props) => {
           >
             Books
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
         <li>
           <Link
@@ -93,6 +99,7 @@ const Categories = (props) => {
           >
             Grocery
           </Link>
+          <span className={classes.borderMenu}></span>
         </li>
       </ul>
       <Search />

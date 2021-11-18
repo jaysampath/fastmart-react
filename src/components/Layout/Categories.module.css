@@ -1,14 +1,13 @@
 .nav{
-    height: 2.5rem;
+    max-height: 2.5rem;
     width: auto;
     border: 1px solid #343377;
     background-color: #39397c;
     padding: 0 10%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     color: white;
-    font: inherit;
     font-size: small;
 }
 
@@ -26,12 +25,23 @@
 
   
   .nav li {
-    font-size: 50%; 
-    margin-left: 1.5rem;
-    font-size: 1.1rem;
-    border: 1px solid #272730;
-    border-radius: 10px;
+    font-size: 1rem; 
+    max-height: 1.5rem;
+    /* margin-left: 1.5rem; */
+    font-size: 0.9rem;
     padding: 0.1rem  0.5rem;
+  }
+
+  .link:hover,
+  .link:active{
+    color: rgb(254,189,105);
+  }
+
+
+  .borderMenu{
+    border-left: 1px solid black ;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .nav li:hover{

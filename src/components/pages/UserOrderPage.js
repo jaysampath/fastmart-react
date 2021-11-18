@@ -51,7 +51,7 @@ const UserOrderPage = () => {
   if(isLoading){
     return (
       <div className={classes.loaderDiv}>
-        <Loader type="Oval" color="white" height={100} width={110} />
+        <Loader type="Oval" color="black" height={100} width={110} />
       </div>
     );
   }

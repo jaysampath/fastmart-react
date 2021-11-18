@@ -44,7 +44,7 @@ const Category = (props) => {
 
   return (
     <div>
-      <h1 className={classes.title}>  Sub-Categories in {categoryName}</h1>
+      {/* <h1 className={classes.title}>  Sub-Categories in {categoryName}</h1> */}
       <div className={classes.subCategories}>
         {subCategoryArray.map((sub) => {
           return (

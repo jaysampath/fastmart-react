@@ -26,16 +26,13 @@ export const AppAuthContextProvider = (props) => {
   const loginHandler = (token) => {
     //console.log(token);
     setToken(token);
-    //console.log("userIsAuth: " + userIsAuth);
     setCookie("loginCookieForEcommerce", token, { path: "/" });
-   // console.log("loginCookie in auth login: ", cookie);
   };
 
   const logoutHandler = () => {
     setToken(null);
     //console.log("logout");
     setCookie("loginCookieForEcommerce","",{path:"/"});
-   // removeCookie("loginCookie");
   };
 
   const contextValue = {

@@ -23,7 +23,7 @@ const ItemAllReviews = () => {
     useEffect(()=>{
         const fetchAllReviews = async() => {
             setIsLoading(true);
-            const response = await fetch(`${itemAllReviewsLink+ itemId}` ,{
+            const response = await fetch(`${itemAllReviewsLink+ itemId}`,{
                 headers:{
                     "Access-Control-Allow-Origin":"*"
                 }
@@ -60,11 +60,12 @@ const ItemAllReviews = () => {
     if(isLoading){
         return (
             <div className={classes.loaderDiv}>
-              <h2 className={classes.loaderDivText}>Please wait while we fetch some top products for you...</h2>
-              <Loader type="RevolvingDot" color="white" height={100} width={110} />
+              <h2 className={classes.loaderDivText}>loading reviews...</h2>
+              <Loader type="RevolvingDot" color="black" height={100} width={110} />
             </div>
           );
     }
+
 
     return (
         <div className={classes.reviewsDiv}>
@@ -74,8 +75,8 @@ const ItemAllReviews = () => {
                 <>
                   <PaginationForReviews
                     data={fetchedReviews}
-                    pageLimit={5}
-                    dataLimit={10}
+                    pageLimit={Math.round(fetchedReviews.length/5)}
+                    dataLimit={5}
                   />
                 </>
               ) : (

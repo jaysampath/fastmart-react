@@ -4,7 +4,10 @@ import AppAuthContext from "../../context/app-auth-context";
 import classes from "./OrderSummary.module.css";
 import { useState } from "react";
 import Loader from "react-loader-spinner";
+import { useDispatch } from "react-redux";
 import { saveOrderLink } from "../../url/Url";
+import { FetchCartData } from "../../redux/CartActions";
+
 const OrderSummary = (props) => {
   const appAuthCtx = useContext(AppAuthContext);
   const loggedInUser = appAuthCtx.token["loginCookieForEcommerce"];
@@ -14,7 +17,7 @@ const OrderSummary = (props) => {
 
   const location = useLocation();
   const params = location.state;
-
+  const dispatch = useDispatch();
   if (!params) {
     return (
       <p style={{ backgroundColor: "white", textAlign: "center" }}>
@@ -59,7 +62,7 @@ const OrderSummary = (props) => {
       method: "POST",
       body: JSON.stringify({
         userEmail: loggedInUser,
-        orderTime: "now",
+        orderTime: new Date().toLocaleString(),
         orderAmount: orderAmount,
         orderItems: orderItemsData,
         orderAddress: orderAddressData,
@@ -98,6 +101,9 @@ const OrderSummary = (props) => {
   }
 
   if (isSuccess) {
+
+    dispatch(FetchCartData(loggedInUser));
+
     return (
       <div className={classes.successDiv}>
         <h1 className={classes.successMsg}> Order Placed Succesfully!! </h1>

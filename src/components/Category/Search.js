@@ -1,7 +1,9 @@
 import { useState } from "react";
 import classes from "./Search.module.css";
-import {  useHistory} from "react-router-dom";
-import searchImg from "../../resources/search1.png";
+import { useHistory } from "react-router-dom";
+//import searchImg from "../../resources/search1.png";
+import MaterialIcon from "material-icons-react"
+
 const Search = () => {
   const [searchText, setTextSearch] = useState("");
   const history = useHistory();
@@ -13,16 +15,16 @@ const Search = () => {
   const searchButtonHandler = (event) => {
     event.preventDefault();
 
-    if(searchText===''){
+    if (searchText === "") {
       return;
     }
 
     history.push({
-      pathname:"/search-results",
-      state:{
+      pathname: "/search-results",
+      state: {
         text: searchText,
-      }
-    })
+      },
+    });
   };
 
   return (
@@ -37,11 +39,14 @@ const Search = () => {
           placeholder="search for anything.. "
         />
         <button type="submit" className={classes.submitButton}>
-          <img
+          {/* <img
             className={classes.searchIcon}
             src={searchImg}
             alt="search"
-          />
+          /> */}
+          <MaterialIcon icon="search" color="black" size="27" />
+
+          {/* <span className="material-icons-outlined">account_circle</span> */}
         </button>
       </form>
     </div>

@@ -157,7 +157,7 @@ const OrderAddressForm = (props) => {
             </button>
             {!isValidated && (
               <button className={classes.proceedButton} type="submit">
-                Proceed
+                Validate & Proceed
               </button>
             )}
             {isValidated && (

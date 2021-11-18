@@ -7,8 +7,7 @@ export const FetchCartData = (loggedInUser) => {
   return async (dispatch) => {
     const fetchCart = async () => {
       const response = await fetch(
-        `${ fetchUserCartLink +loggedInUser}`,
-        {
+        `${ fetchUserCartLink +loggedInUser}`,{
           headers:{
             "Access-Control-Allow-Origin":"*"
           }

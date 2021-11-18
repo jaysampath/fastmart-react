@@ -3,7 +3,8 @@ import ItemCard from "../Item/ItemCard";
 import classes from "./Pagination.module.css";
 
 const Pagination = ({ data, pageLimit, dataLimit }) => {
-  const [numPages] = useState( Math.round(data.length / dataLimit) ===0 ? 5 : Math.round(data.length / dataLimit)  );
+ 
+  const [numPages] = useState( pageLimit );
   //console.log("numpages: ",numPages);
   const [currentPage, setCurrentPage] = useState(1);
 
