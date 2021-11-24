@@ -1,4 +1,5 @@
-const baseUrl = "https://fastmart-mongo-http.herokuapp.com";
+const baseUrl = "http://ec2-65-1-64-123.ap-south-1.compute.amazonaws.com:9090";
+//const baseUrl = "http://localhost:9090";
 
 export const checkExistingUserLink = baseUrl+ "/user/check/";
 
@@ -39,3 +40,7 @@ export const addItemQuantityInCartLink = baseUrl+ "/cart/change/add/";
 export const reduceItemQuantityInCartLink = baseUrl+ "/cart/change/reduce/"
 
 export const deleteItemFromCartLink = baseUrl+ "/cart/delete/";
+
+export const getTopRatedMobilesLink = baseUrl + "/item/top/mobiles";
+
+export const getLatestOrder = baseUrl+"/order/latest/";

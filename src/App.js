@@ -6,7 +6,6 @@ import { useContext, useEffect } from "react";
 import Items from "./components/Item/Items";
 import ItemDetail from "./components/Item/ItemDetail";
 import Category from "./components/Category/Category";
-import UserAccount from "./components/pages/UserAccountPage";
 import { useDispatch } from "react-redux";
 import { FetchCartData } from "./redux/CartActions";
 import ItemsBySubCategories from "./components/Category/ItemsBySubCategories";
@@ -20,6 +19,7 @@ import Signup from "./components/Auth/Signup";
 import OtpForm from "./components/Auth/OtpForm";
 import ForgotPassword from "./components/Auth/ForgotPassword";
 import UpdatePassword from "./components/Auth/UpdatePassword";
+import HomePage from "./components/HomePage/HomePage";
 
 function App() {
   const authCtx = useContext(AppAuthContext);
@@ -75,16 +75,16 @@ function App() {
         </Layout>
       </Route>
 
-      <Route path="/user-account" exact>
+      <Route path="/all" exact>
         <Layout>
-          <UserAccount />
+          <Items />
         </Layout>
       </Route>
 
       <Route path="/" exact>
         {authCtx.isLoggedIn ? (
           <Layout>
-            <Items />
+            <HomePage />
           </Layout>
         ) : (
           <Redirect to="/login" exact />
