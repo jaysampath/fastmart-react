@@ -64,7 +64,7 @@ const Items = (props) => {
 
       {fetchedItems.length > 0 ? (
         <>
-          <Pagination data={fetchedItems} pageLimit={Math.round(fetchedItems.length/9)} dataLimit={9} />
+          <Pagination data={fetchedItems} pageLimit={Math.round(fetchedItems.length/9) } dataLimit={9} />
         </>
       ) : (
         <h1>No Items to display</h1>

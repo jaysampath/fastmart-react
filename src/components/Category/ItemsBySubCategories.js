@@ -10,7 +10,7 @@ const ItemsBySubCategories = (props) => {
   const params = location.state;
   const history = useHistory();
   if (!params) {
-    history.push("/");
+    history.goBack();
   }
   
   const categoryName = params.categoryName;

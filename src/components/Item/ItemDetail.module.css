@@ -2,7 +2,7 @@
     margin: 1rem auto;
     max-width: 100rem;
     width: 95%;
-    padding: 1rem;
+    padding: 3rem;
     background-color: white;
     border: 1px solid white;
     border-radius: 15px;
@@ -10,11 +10,8 @@
 }
 
 .imageDiv{
-    float: left;
-    padding: 3rem;
-    position: relative;
-    top:-1rem;
-    left: 2rem;
+    padding: 3rem ;
+    text-align: center;
 }
 
 .inStock{
@@ -27,25 +24,23 @@
     font-style: italic;
 }
 
-.image{
-    width: 25rem;
-    height: 25rem;
+ .image{
+    max-width: 25rem;
+    max-height: 25rem;
 
-}
+} 
 
 .detailsDiv{
-    position: relative;
-    top: -1rem;
-    padding: 3rem;
     text-align: center;
+    
 }
 
-.clear{
-    float:none;
-}
 
 .mainDiv{
-    height: 32rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .star{

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import classes from "./Signup.module.css";
 import { Link, useHistory } from "react-router-dom";
 import { checkExistingUserLink } from "../../url/Url";
-
+import AppAuthContext from "../../context/app-auth-context";
 const Signup = (props) => {
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
@@ -11,6 +11,10 @@ const Signup = (props) => {
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
   const history = useHistory();
+  const authCtx = useContext(AppAuthContext);
+  if(authCtx.isLoggedIn){
+    history.push("/");
+  }
   const emailInputHandler = (event) => {
     setEmailInput(event.target.value);
   };
@@ -127,15 +131,6 @@ const Signup = (props) => {
             <button className={classes.button} type="submit">
               Signup
             </button>
-            {/* <Link  to={{
-              pathname:"/otp",
-              state:{
-                email : emailInput,
-                password: passwordInput,
-                action:"Signup email Verification",
-                description:"verify your email"
-              }
-            }} > Signup </Link> */}
             <Link to="/login" className={classes.loginLink}>
               Already a user? Login here
             </Link>

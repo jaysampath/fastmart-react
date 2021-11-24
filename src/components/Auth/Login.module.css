@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Patrick+Hand&family=Satisfy&display=swap');
 .loginPage {
   width: 100%;
   height: 100vh;
@@ -12,7 +13,8 @@
 
 .title{
   text-align: center;
-  font: 3rem sans-serif;
+  font-family: 'Balsamiq Sans', cursive;
+  font-size: 3rem;
   margin-bottom: 0;
   padding-bottom: 0;
 }

@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Comforter&family=Patrick+Hand&family=Satisfy&display=swap");
 .signupPage {
   width: 100%;
   height: 100vh;
@@ -10,109 +11,107 @@
   background-size: cover;
 }
 
-.title{
-    text-align: center;
-    font: 3rem sans-serif;
-    margin-bottom: 0;
-    padding-bottom: 0;
+.title {
+  text-align: center;
+  font-family: "Balsamiq Sans", cursive;
+  font-size: 3rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-.description{
+.description {
   text-align: center;
 }
 
-.formDiv{
-    background: white;
-    box-shadow: 0 20px 8px rgba(0,0,0,0.26) ;
-    border-radius: 10px;
-    width: 35%;
-    height: auto;
-    margin: 3rem auto;
-    padding-top: 0.25rem;
-    font-size: 1rem;
-    position: relative;
-    left: 12rem;
-    top: 1rem;
+.formDiv {
+  background: white;
+  box-shadow: 0 20px 8px rgba(0, 0, 0, 0.26);
+  border-radius: 10px;
+  width: 35%;
+  height: auto;
+  margin: 3rem auto;
+  padding-top: 0.25rem;
+  font-size: 1rem;
+  position: relative;
+  left: 12rem;
+  top: 1rem;
 }
 
 .input {
-    margin: 1rem auto ;
-    padding: 1rem;
-    width: 80%;
-    max-width: 40rem;
-    
-  }
-  
-  .input label {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  
-  .input input {
-    font: inherit;
-    display: block;
-    width: 100%;
-    border: 1px solid #ccc;
-    padding: 0.15rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .input input:focus {
-    outline: none;
-    border-color: #4f005f;
-  }
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 80%;
+  max-width: 40rem;
+}
 
-  .button {
-    font: inherit;
-    border: 1px solid #61dafb;
-    background: #61dafb;
-    color: black;
-    padding: 0.25rem 1rem;
-    cursor: pointer;
-    margin: 1rem auto;
-    display: block;
-  }
-  
-  .button:hover,
-  .button:active {
-    background: white;
-    border-color: #741188;
-    color: #000;
-  }
-  
-  .button:focus {
-    outline: none;
-  }
+.input label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
 
-  .loginLink{
-      font:inherit;
-      text-decoration: none;
-      text-align: center;
-      margin: 0rem 0;
-      display: block;
-      color: #000;
-  }
+.input input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
+}
 
-  .loginLink:hover{
-      text-decoration: underline;
-      color: #000;
-  }
+.input input:focus {
+  outline: none;
+  border-color: #4f005f;
+}
 
-  .error{
- 
-      color: red;
+.button {
+  font: inherit;
+  border: 1px solid #61dafb;
+  background: #61dafb;
+  color: black;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+  margin: 1.5rem auto;
+  display: block;
+}
 
-      margin: 0rem auto;
-      text-align: center;
-      width: 25rem;
-      overflow: hidden;
-  }
+.button:hover,
+.button:active {
+  background: white;
+  border-color: #741188;
+  color: #000;
+}
 
-  .success{
+.button:focus {
+  outline: none;
+}
 
-    color: green;
- 
-    margin: 0rem auto;
-    text-align: center;
-    width: 25rem;
+.loginLink {
+  font: inherit;
+  text-decoration: none;
+  text-align: center;
+  margin: 1.5rem 0 0 1rem;
+  display: block;
+  color: #000;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+.error {
+  color: red;
+
+  margin: 0rem auto;
+  text-align: center;
+  width: 25rem;
+  overflow: hidden;
+}
+
+.success {
+  color: green;
+
+  margin: 0rem auto;
+  text-align: center;
+  width: 25rem;
 }

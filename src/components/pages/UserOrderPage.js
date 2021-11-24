@@ -3,9 +3,13 @@ import AppAuthContext from "../../context/app-auth-context";
 import { useContext, useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { userOrdersLink } from "../../url/Url";
+import { useHistory } from "react-router";
 const UserOrderPage = () => {
   const authCtx = useContext(AppAuthContext);
-
+  const history = useHistory();
+  if(!authCtx.isLoggedIn){
+    history.push("/login");
+  }
   const loggedInUser = authCtx.token["loginCookieForEcommerce"];
 
   const [fetchedOrders, setFetchedOrders] = useState([]);
@@ -60,6 +64,7 @@ const UserOrderPage = () => {
     <div className={classes.userOrdersPage}>
       <h1 className={classes.pageTitle}>Your Orders</h1>
       <div className={classes.orderDiv}>
+        {fetchedOrders.length===0 && <p className={classes.noOrders}>No orders yet!</p> }
         {fetchedOrders.map((order) => {
           return (
             <div className={classes.order} key={order.orderId}>

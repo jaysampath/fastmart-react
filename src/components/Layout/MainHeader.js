@@ -19,7 +19,7 @@ const Header = (props) => {
       <header className={classes.header}>
         <h1>
           <Link to="/" className={classes.logo}>
-            FastMart
+            <span className={classes.title}> FastMart </span>
           </Link>
         </h1>
         {appAuthCtx.isLoggedIn ? (

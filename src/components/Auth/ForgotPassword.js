@@ -1,12 +1,17 @@
 import classes from "./ForgotPassword.module.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useHistory } from "react-router";
 import { checkExistingUserLink } from "../../url/Url";
+import AppAuthContext from "../../context/app-auth-context";
 
 const ForgotPassword = () => {
   const [emailInput, setEmailInput] = useState("");
   const [error, setError] = useState(null);
   const history = useHistory();
+  const authCtx = useContext(AppAuthContext)
+  if(authCtx.isLoggedIn){
+    history.push("/");
+  }
   const emailInputHandler = (event) => {
     setEmailInput(event.target.value);
   };

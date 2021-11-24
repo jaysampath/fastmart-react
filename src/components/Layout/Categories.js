@@ -10,7 +10,7 @@ const Categories = (props) => {
           <Link
             className={classes.link}
             to={{
-              pathname: "/",
+              pathname: "/all",
             }}
           >
             All

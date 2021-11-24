@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import classes from "./UpdatePassword.module.css";
 import { updatePasswordLink } from "../../url/Url";
+import AppAuthContext from "../../context/app-auth-context";
 const UpdatePassword = () => {
   const [passwordInput, setPasswordInput] = useState("");
   const [confirmPasswordInput, setConfirmPassword] = useState("");
@@ -10,6 +11,10 @@ const UpdatePassword = () => {
   const [isUpdating, setIsUpdating] = useState(false);
   const location = useLocation();
   const history = useHistory();
+  const authCtx = useContext(AppAuthContext);
+  if(authCtx.isLoggedIn){
+    history.goBack();
+  }
   const params = location.state;
   if (!params) {
     //window.location.href = "http://localhost:3000/login";

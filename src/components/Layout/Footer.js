@@ -3,16 +3,32 @@ import classes from "./Footer.module.css";
 const Footer = () => {
   return (
     <footer className={classes.footer}>
-       <hr />
+      <hr />
       <div className={classes.actionsDiv}>
-       
-        <p>  &#169; 2021, FastMart </p>
-         <p className={classes.link}>  About Us  </p>
-          <p className={classes.link}>Contact Us</p>
-          <p className={classes.link}>Return Policy</p>
-          <p className={classes.link}>Privacy Policy</p>
+        <p> &#169; 2021, FastMart </p>
+        <p>
+          <a
+            href="https://enquero.com/about-us/"
+            target="_blank"
+            className={classes.link}
+            rel="noreferrer"
+          >
+            About Us
+          </a>
+        </p>
+        <p>
+          <a
+            href="mailto:jaysampath.fastmart@gmail.com"
+            target="_blank"
+            className={classes.link}
+            rel="noreferrer"
+          >
+            Contact Us
+          </a>
+        </p>
+        <p>Return Policy</p>
+        <p>Privacy Policy</p>
       </div>
-      
     </footer>
   );
 };

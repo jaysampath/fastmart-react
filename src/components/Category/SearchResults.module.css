@@ -5,3 +5,10 @@
 .loaderDivText{
     color: black;
 }
+
+.searchResultsDiv{
+    margin: 2rem auto;
+
+    width: 90%;
+    padding: 1rem;
+}

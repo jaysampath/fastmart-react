@@ -11,6 +11,9 @@ const Login = (props) => {
   const history = useHistory();
 
   const authCtx = useContext(AppAuthContext);
+  if(authCtx.isLoggedIn){
+    history.push("/");
+  }
 
   const emailInputHandler = (event) => {
     setEmailInput(event.target.value);
@@ -57,7 +60,6 @@ const Login = (props) => {
         if (status === 202) {
           setError(null);
           setSuccessMsg(message);
-          //authCtx.login(emailInput);
           const timer = setTimeout(()=>{
             setSuccessMsg(null);
 
@@ -66,8 +68,6 @@ const Login = (props) => {
 
             clearTimeout(timer);
          },1000)
-          //window.location.href = "http://localhost:3000";
-          //history.push("/");
         }
       })
       .catch((error) => {

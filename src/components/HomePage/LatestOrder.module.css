@@ -1,0 +1,127 @@
+
+.title{
+    
+    font-style: italic;
+    font-size: 1.2rem;
+}
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+width: 100%;
+padding-right: var(--bs-gutter-x, 0.75rem);
+padding-left: var(--bs-gutter-x, 0.75rem);
+margin-right: auto;
+margin-left: auto;
+}
+
+
+
+@media (min-width: 576px) {
+.container-sm, .container {
+max-width: 540px;
+}
+}
+@media (min-width: 768px) {
+.container-md, .container-sm, .container {
+max-width: 720px;
+}
+}
+@media (min-width: 992px) {
+.container-lg, .container-md, .container-sm, .container {
+max-width: 960px;
+}
+}
+@media (min-width: 1200px) {
+.container-xl, .container-lg, .container-md, .container-sm, .container {
+max-width: 1140px;
+}
+}
+@media (min-width: 1400px) {
+.container-xxl, .container-xl, .container-lg, .container-md, .container-sm, .container {
+max-width: 1320px;
+}
+}
+
+.shadow {
+    box-shadow: 0 1.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    padding: 1rem;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid gray;
+    border-radius: 0.5rem;
+    }
+
+.titleDiv{
+    height: 10rem;
+}
+
+.mainDiv{
+    margin: 5rem 0 2rem 2.7rem;
+    border: 1px solid gray;
+    padding: 0 1rem 1rem 0;
+    background-color: white;
+    box-shadow: 0 1.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.mainTitle{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 2rem;
+    position: relative;
+    top: 2.5rem;
+}
+
+.latestOrderDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 10rem;
+}
+
+.loadingDiv{
+    text-align: center;
+}
+
+.orderImage{
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+    top: 2rem;
+    left: -6rem;
+}
+
+.detailsDiv{
+    margin-left: 2rem;
+    position: relative;
+    top: 0rem;
+    left: -5rem;
+    
+}
+
+.orderTitle{
+    font-family: 'Patrick Hand', cursive;
+}
+
+.addReviewButton{
+    position: relative;
+    top: 5rem;
+    
+}
+
+.addReviewButton:hover{
+    background-color: rgb(99, 99, 252);
+}

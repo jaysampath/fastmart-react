@@ -1,13 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Comforter&family=Patrick+Hand&family=Satisfy&display=swap');
 .header {
   width: auto;
   height: 4rem;
-  background-color: #101042;
+  background-color: #030330;
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10%;
   box-shadow: 0 2px 8px rgba(22, 22, 22, 0.25);
+}
+
+.title{
+  font-family: 'Balsamiq Sans', cursive;
+  font-size: 120%;
 }
 
 .userName {

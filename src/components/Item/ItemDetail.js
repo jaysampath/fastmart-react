@@ -18,7 +18,8 @@ const ItemDetail = (props) => {
   const params = location.state;
   const history = useHistory();
   if (!params) {
-    history.push("/");
+    console.log("inside check")
+    history.goBack();
   }
 
   const [isLoading, setIsLoading] = useState(false);
@@ -175,7 +176,6 @@ const ItemDetail = (props) => {
           </Link>
         </div>
       </div>
-      <div className={classes.clear}></div>
       <hr />
       <ItemTopReviews
         itemId={item.itemId}

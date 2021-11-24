@@ -16,6 +16,9 @@ const OtpForm = (props) => {
   const location = useLocation();
   const history = useHistory();
   const authCtx = useContext(AppAuthContext);
+  if(authCtx.isLoggedIn){
+    history.goBack();
+  }
   const params = location.state;
   if (!params) {
    // window.location.href = "http://localhost:3000/login";
