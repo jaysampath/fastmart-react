@@ -8,7 +8,7 @@ const Footer = () => {
         <p> &#169; 2021, FastMart </p>
         <p>
           <a
-            href="https://enquero.com/about-us/"
+            href="https://jaysampath.github.io/"
             target="_blank"
             className={classes.link}
             rel="noreferrer"
