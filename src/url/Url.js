@@ -1,4 +1,4 @@
-const baseUrl = "https://fastmart-mongo-http.herokuapp.com";
+const baseUrl = "https://fastmart-springboot.herokuapp.com";
 //const baseUrl = "http://localhost:9090";
 
 export const checkExistingUserLink = baseUrl+ "/user/check/";
