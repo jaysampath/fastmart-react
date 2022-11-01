@@ -65,7 +65,7 @@ const Signup = (props) => {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data);
-        if (data.status === 406) {
+        if (data.status === 404) {
           setError(data.message);
           setSuccessMsg(null);
         }

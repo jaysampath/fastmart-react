@@ -27,13 +27,11 @@ function App() {
   const dispatch = useDispatch();
   //const cart = useSelector(state=>state.cart);
 
-  const loggedInUserEmail = authCtx.token["loginCookieForEcommerce"];
-
   useEffect(() => {
     if (authCtx.isLoggedIn) {
-      dispatch(FetchCartData(loggedInUserEmail));
+      dispatch(FetchCartData(authCtx.userEmail, authCtx.token));
     }
-  }, [authCtx.isLoggedIn, dispatch, loggedInUserEmail]);
+  }, [authCtx, dispatch]);
 
   return (
     <Switch>

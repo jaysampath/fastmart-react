@@ -3,8 +3,11 @@ import classes from "./Items.module.css";
 import Pagination from "../UI/Pagination";
 import Loader from "react-loader-spinner";
 import { allItemsLink } from "../../url/Url";
+import { useContext } from "react";
+import AppAuthContext from "../../context/app-auth-context";
 
 const Items = (props) => {
+  const authCtx = useContext(AppAuthContext);
   const [fetchedItems, setFetchedItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -15,7 +18,8 @@ const Items = (props) => {
     const fetchItems = async () => {
       const responce = await fetch(allItemsLink,{
         headers:{
-          "Access-Control-Allow-Origin":"*"
+          "Access-Control-Allow-Origin":"*",
+          "Authorization" : authCtx.token
         }
       });
       if (!responce.ok) {
@@ -40,7 +44,7 @@ const Items = (props) => {
       setError(error.message);
       console.log(error.message);
     }
-  }, []);
+  }, [authCtx.token]);
 
   if (isLoading) {
     // return <p className={classes.isLoading}>fetching items...</p>;
@@ -67,7 +71,7 @@ const Items = (props) => {
           <Pagination data={fetchedItems} pageLimit={Math.round(fetchedItems.length/9) } dataLimit={9} />
         </>
       ) : (
-        <h1>No Items to display</h1>
+        <h1>No Products to display</h1>
       )}
     </div>
   );

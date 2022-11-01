@@ -17,8 +17,9 @@ const CartItem = (props) => {
   const addQuantityHandler = () => {
     dispatch(
       addItemQuantityInCart(
-        authCtx.token["loginCookieForEcommerce"],
-        cartItem.itemId
+        authCtx.userEmail,
+        cartItem.productId,
+        authCtx.token
       )
     );
   };
@@ -26,8 +27,9 @@ const CartItem = (props) => {
   const reduceQuantityHandler = () => {
     dispatch(
       reduceItemQuantityInCart(
-        authCtx.token["loginCookieForEcommerce"],
-        cartItem.itemId
+        authCtx.userEmail,
+        cartItem.productId,
+        authCtx.token
       )
     );
   };
@@ -35,12 +37,13 @@ const CartItem = (props) => {
   const deleteItemHandler = () => {
     dispatch(
       deleteItemFromCart(
-        authCtx.token["loginCookieForEcommerce"],
-        cartItem.itemId
+        authCtx.userEmail,
+        cartItem.productId,
+        authCtx.token
       )
     );
     // const timer = setTimeout(() => {
-    //   dispatch(FetchCartData(authCtx.token["loginCookieForEcommerce"]));
+    //   dispatch(FetchCartData(authCtx.userEmail));
     //   clearTimeout(timer);
     // }, 2000);
   };
@@ -53,29 +56,29 @@ const CartItem = (props) => {
         to={{
           pathname: "/item-detail",
           state: {
-            itemId: cartItem["itemId"],
+            productId: cartItem["productId"],
           },
         }}
       >
         <img
           className={classes.image}
-          src={imageResourceUrl + cartItem["itemImageUrl"]}
+          src={imageResourceUrl + cartItem["productImageUrl"]}
           alt="item"
         />
       </Link>
       </div>
 
       <div className={classes.detailsDiv}>
-        <p className={classes.cartItemTitle}>{cartItem["itemName"]}</p>
-      <p className={classes.price}> &#8377; {cartItem["itemPrice"]}</p>
-        <p className={classes.stock}>{cartItem["itemStock"]<50 ? "Hurry only a few left" : "In Stock"}</p>
+        <p className={classes.cartItemTitle}>{cartItem["productName"]}</p>
+      <p className={classes.price}> &#8377; {cartItem["productPrice"]}</p>
+        <p className={classes.stock}>{cartItem["productStock"]<50 ? "Hurry only a few left" : "In Stock"}</p>
       </div>
        
        <div className={classes.actions}>
         <button onClick={reduceQuantityHandler} className={classes.plusMinus}>−</button>
         <span className={classes.itemQuantitySpan}>
           {" "}
-          {cartItem["itemQuantity"]}{" "}
+          {cartItem["productQuantity"]}{" "}
         </span>
         <button onClick={addQuantityHandler} className={classes.plusMinus}  >+</button>
         <button onClick={deleteItemHandler}  className={classes.deleteButton}>delete</button>

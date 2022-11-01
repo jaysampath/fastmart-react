@@ -25,7 +25,7 @@ const Header = (props) => {
         {appAuthCtx.isLoggedIn ? (
           <p className={classes.userName}>
             {" "}
-            Welcome, {`${appAuthCtx.token["loginCookieForEcommerce"]}`}{" "}
+            Welcome, {`${appAuthCtx.username}`}{" "}
           </p>
         ) : null}
         <nav className={classes.nav}>

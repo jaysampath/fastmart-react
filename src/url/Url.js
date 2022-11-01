@@ -1,5 +1,7 @@
-const baseUrl = "https://fastmart-springboot.herokuapp.com";
-//const baseUrl = "http://localhost:9090";
+const baseUrl = "https://fastmart-backend.herokuapp.com";
+//const baseUrl = "http://localhost:8080";
+
+export const validateTokenLink = baseUrl + "/user/validate/token";
 
 export const checkExistingUserLink = baseUrl+ "/user/check/";
 
@@ -13,19 +15,19 @@ export const validateOtpLink = baseUrl+ "/otp/validate/";
 
 export const updatePasswordLink = baseUrl+ "/user/update/";
 
-export const ItemsBySubCategoriesLink = baseUrl+ "/item/items/";
+export const ItemsBySubCategoriesLink = baseUrl+ "/product/";
 
-export const searchResultsLink = baseUrl+ "/item/search/";
+export const searchResultsLink = baseUrl+ "/product/search/";
 
-export const addNewReviewLink = baseUrl+ "/item/review";
+export const addNewReviewLink = baseUrl+ "/product/review";
 
-export const itemAllReviewsLink =  baseUrl+ "/item/reviews/";
+export const itemAllReviewsLink =  baseUrl+ "/product/reviews/";
 
-export const itemDetailLink =  baseUrl+ "/item/items/";
+export const itemDetailLink =  baseUrl+ "/product/";
 
-export const allItemsLink = baseUrl+  "/item/items";
+export const allItemsLink = baseUrl+  "/product/list";
 
-export const itemTopReviewsLink = baseUrl+ "/item/reviews/top/";
+export const itemTopReviewsLink = baseUrl+ "/product/reviews/top/";
 
 export const saveOrderLink =  baseUrl+ "/order/orders";
 
@@ -41,6 +43,6 @@ export const reduceItemQuantityInCartLink = baseUrl+ "/cart/change/reduce/"
 
 export const deleteItemFromCartLink = baseUrl+ "/cart/delete/";
 
-export const getTopRatedMobilesLink = baseUrl + "/item/top/mobiles";
+export const getTopRatedMobilesLink = baseUrl + "/product/top-rated/mobiles";
 
 export const getLatestOrder = baseUrl+"/order/latest/";

@@ -9,7 +9,7 @@ const UserAccount = () => {
  
    return (
            <div className={classes.account}>
-               <h1 className={classes.userEmail}>Hi, {appCtx.token["loginCookieForEcommerce"]} </h1>
+               <h1 className={classes.userEmail}>Hi, {appCtx.username} </h1>
                <hr />
                <div className={classes.linksDiv} >
                    <ul className={classes.links}>

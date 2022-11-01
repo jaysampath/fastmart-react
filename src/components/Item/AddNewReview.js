@@ -5,7 +5,7 @@ import { addNewReviewLink } from "../../url/Url";
 const AddNewReview = (props) => {
   const itemId = props.itemId;
   const authCtx = useContext(AppAuthContext);
-  const loggedInUser = authCtx.token["loginCookieForEcommerce"];
+  const loggedInUser = authCtx.userEmail;
   const [isSent, SetIsSent] = useState(false);
   const [isError, setIsError] = useState(null);
   const [reviewInput, setReviewInout] = useState("");
@@ -35,11 +35,12 @@ const AddNewReview = (props) => {
         review: reviewInput,
         postedTime: "",
         rating: ratingInput,
-        itemId: itemId,
+        productId: itemId,
       }),
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin":"*"
+        "Access-Control-Allow-Origin":"*",
+        "Authorization" : authCtx.token
       },
     })
       .then((response) => {

@@ -10,19 +10,25 @@ const LatestOrder = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   const authCtx = useContext(AppAuthContext);
-  const loggedInUserEmail = authCtx.token["loginCookieForEcommerce"];
   const imageResourceUrl = "https://drive.google.com/uc?export=view&id=";
+
   useEffect(() => {
     const fetchOrder = async () => {
       setIsLoading(true);
-      const response = await fetch(getLatestOrder + loggedInUserEmail);
+      const response = await fetch(getLatestOrder + authCtx.userEmail, {
+        method : "GET",
+        headers : {
+          "Access-Control-Allow-Origin":"*",
+          "Authorization" : authCtx.token
+        }
+      });
 
       if (!response.ok) {
-        throw new Error("something went wrong");
+       // throw new Error("something went wrong");
       }
 
       const data = await response.json();
-      console.log(data);
+     // console.log(data);
       setFetchLatestOrder(data);
       setIsError(null);
       setIsLoading(false);
@@ -39,13 +45,13 @@ const LatestOrder = (props) => {
       setIsError(error.message);
       setIsLoading(false);
     }
-  }, [loggedInUserEmail]);
+  }, [authCtx.userEmail, authCtx.token]);
 
   if (isError) {
     return null;
   }
 
-  if (!fetchLatestOrder.orderItems) {
+  if (!fetchLatestOrder.orderProducts) {
     return null;
   }
 
@@ -71,14 +77,14 @@ const LatestOrder = (props) => {
             className={classes.orderImage}
             src={
               imageResourceUrl +
-              fetchLatestOrder.orderItems[0].orderItemImageUrl
+              fetchLatestOrder.orderProducts[0].productImageUrl
             }
             alt="order"
           />
         </div>
         <div className={classes.detailsDiv}>
           <h2 className={classes.orderTitle}> Your Order: </h2>
-          <h3>{fetchLatestOrder.orderItems[0].orderItemName}</h3>
+          <h3>{fetchLatestOrder.orderProducts[0].productName}</h3>
           <h4> {fetchLatestOrder.orderTime} </h4>
         </div>
         <div>
@@ -86,7 +92,7 @@ const LatestOrder = (props) => {
             to={{
               pathname: "/item-detail",
               state: {
-                itemId: fetchLatestOrder.orderItems[0].orderItemId,
+                productId: fetchLatestOrder.orderProducts[0].productId,
               },
             }}
           >

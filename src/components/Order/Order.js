@@ -33,7 +33,7 @@ const Order = (props) => {
 
   let orderAmount = 0;
   orderItemsArray.map((ite) => {
-    orderAmount = orderAmount + ite.itemPrice * ite.itemQuantity;
+    orderAmount = orderAmount + ite.price * ite.quantity;
     return 0;
   });
 
@@ -52,26 +52,26 @@ const Order = (props) => {
         <h2>Order Items</h2>
         {orderItemsArray.map((item) => {
           return (
-            <li className={classes.orderItem} key={item.itemId}>
+            <li className={classes.orderItem} key={item.productId}>
               <div className={classes.imageDiv}>
                 <div className={classes.imageLink}>
                   <img
                     className={classes.image}
-                    src={imageResourceUrl + item.itemImageUrl}
+                    src={imageResourceUrl + item.imageUrl}
                     alt="item"
                   />
                 </div>
               </div>
 
               <div className={classes.detailsDiv}>
-                <p className={classes.cartItemTitle}>{item.itemName}</p>
-                <p className={classes.price}> &#8377; {item.itemPrice}</p>
+                <p className={classes.cartItemTitle}>{item.productName}</p>
+                <p className={classes.price}> &#8377; {item.price}</p>
               </div>
 
               <div>
                 Quantity:
                 <span className={classes.itemQuantitySpan}>
-                  {item.itemQuantity}
+                  {item.quantity}
                 </span>
               </div>
 

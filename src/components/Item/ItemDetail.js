@@ -12,7 +12,7 @@ const ItemDetail = (props) => {
   const [item, setFetchedItem] = useState({});
 
   const [quantity, setQuantity] = useState(1);
-  const authCtx = useContext(AppAuthContext);
+  
   const dispatch = useDispatch();
   const location = useLocation();
   const params = location.state;
@@ -25,7 +25,9 @@ const ItemDetail = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const itemId = params.itemId;
+  const itemId = params.productId;
+
+  const authCtx = useContext(AppAuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -33,7 +35,8 @@ const ItemDetail = (props) => {
       const response = await fetch(
         `${itemDetailLink+ itemId}`,{
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : authCtx.token
           }
         }
       );
@@ -61,14 +64,18 @@ const ItemDetail = (props) => {
       setFetchedItem({});
       setIsLoading(false);
     }
-  }, [itemId]);
+  }, [itemId, authCtx.token]);
 
   if (!item) {
     return <p>Something went wrong!</p>;
   }
 
-  if (error) {
+  if (error && !authCtx.isLoggedIn) {
     return <p>something went wrong, please try again after sometime</p>;
+  }
+
+  if (error && authCtx.isLoggedIn) {
+    return <p>Loading..</p>;
   }
 
   if (isLoading) {
@@ -90,24 +97,25 @@ const ItemDetail = (props) => {
     //console.log("quantity: ", quantity);
     dispatch(
       addItemToCart(
-        item.itemId,
+        item.productId,
         quantity,
-        authCtx.token["loginCookieForEcommerce"]
+        authCtx.userEmail,
+        authCtx.token
       )
     );
     const timer = setTimeout(() => {
-      dispatch(FetchCartData(authCtx.token["loginCookieForEcommerce"]));
+      dispatch(FetchCartData(authCtx.userEmail, authCtx.token));
       clearTimeout(timer);
-    }, 2000);
+    }, 1000);
   };
 
   const orderItemsArray = [
     {
-      itemId: item.itemId,
-      itemQuantity: quantity,
-      itemName: item.itemName,
-      itemImageUrl: item.itemImageUrl,
-      itemPrice: item.itemPrice,
+      productId: item.productId,
+      quantity: quantity,
+      productName: item.productName,
+      imageUrl: item.imageUrl,
+      price: item.price,
     },
   ];
 
@@ -115,20 +123,20 @@ const ItemDetail = (props) => {
     <div className={classes.itemDetail}>
       <div className={classes.mainDiv}>
         <div className={classes.imageDiv}>
-          {item.itemImageUrl && (
+          {item.imageUrl && (
             <img
               className={classes.image}
-              src={imageResourceUrl + item.itemImageUrl}
+              src={imageResourceUrl + item.imageUrl}
               alt="item"
             />
           )}
         </div>
         <div className={classes.detailsDiv}>
-          <h1> {item.itemName} </h1>
-          <h2> Manufactured by: {item.itemManufacturer}</h2>
+          <h1> {item.productName} </h1>
+          <h2> Manufactured by: {item.manufacturer}</h2>
           <p>
             {" "}
-            {item.itemStock < 50 ? (
+            {item.stock < 50 ? (
               <span className={classes.outOfStock}>
                 Hurry only a few left!{" "}
               </span>
@@ -136,9 +144,9 @@ const ItemDetail = (props) => {
               <span className={classes.inStock}>In Stock </span>
             )}{" "}
           </p>
-          <h2> &#8377; {item.itemPrice}</h2>
+          <h2> &#8377; {item.price}</h2>
           <h4>
-            {item.itemRating} <span className={classes.star}> &#9733; </span>,{" "}
+            {item.rating} <span className={classes.star}> &#9733; </span>,{" "}
             {item.numRatings} ratings
           </h4>
           <p>
@@ -178,10 +186,10 @@ const ItemDetail = (props) => {
       </div>
       <hr />
       <ItemTopReviews
-        itemId={item.itemId}
-        itemRating={item.itemRating}
-        itemName={item.itemName}
-        itemNumRatings={item.numRatings}
+        productId={item.productId}
+        rating={item.rating}
+        productName={item.productName}
+        numRatings={item.numRatings}
       />
     </div>
   );

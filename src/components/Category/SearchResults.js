@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import classes from "./SearchResults.module.css";
 import ItemCard from "../Item/ItemCard";
 import Loader from "react-loader-spinner";
 import { searchResultsLink } from "../../url/Url";
+import AppAuthContext from "../../context/app-auth-context";
+
 const SearchResults = (props) => {
   const location = useLocation();
   const history = useHistory();
@@ -18,6 +20,7 @@ const SearchResults = (props) => {
   const [isError, setIsError] = useState(null);
   const [isFetched, setIsFetched] = useState(false);
   const [fetchedResults, setFetchedResults] = useState([]);
+  const authCtx = useContext(AppAuthContext);
   useEffect(() => {
     const fetchSearchItems = async () => {
       if (searchText.length === 0) {
@@ -28,7 +31,8 @@ const SearchResults = (props) => {
       const response = await fetch(
         `${searchResultsLink + searchText}`,{
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : authCtx.token
           }
         }
       );
@@ -55,7 +59,7 @@ const SearchResults = (props) => {
       setIsError(error.message);
       setFetchedResults([]);
     }
-  }, [searchText]);
+  }, [searchText, authCtx.token]);
 
   if(!isFetched){
     return (

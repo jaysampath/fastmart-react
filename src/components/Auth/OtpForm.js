@@ -87,13 +87,19 @@ const OtpForm = (props) => {
         "Access-Control-Allow-Origin":"*"
       },
     })
-      .then((response) => {
-        return response.json();
-      })
+      .then(response => 
+        response.json().then(data => ({
+          responseData: data,
+            status: response.status
+        })
+      ))
       .then((data) => {
         // console.log("signup response", data);
-        if (data["status"] !== 202) {
-          setError(data["message"]);
+        const status = data.status;
+        const signupResponse = data.responseData;
+        console.log(status, signupResponse);
+        if (status === 404) {
+          setError("Email is already registered, please login with the same.");
         } else {
           setError(null);
           setSuccess("Signed up successfully");
@@ -105,7 +111,7 @@ const OtpForm = (props) => {
           }, 500);
 
           const locationTimer = setTimeout(() => {
-            authCtx.login(email);
+            authCtx.login(signupResponse);
             //window.location.href = "http://localhost:3000";
             history.push("/");
 

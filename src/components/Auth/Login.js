@@ -42,28 +42,34 @@ const Login = (props) => {
         "Access-Control-Allow-Origin":"*"
       },
     })
-      .then((responce) => { 
-        // if(!responce.ok){
-        //   throw new Error("failed to login. please try again after sometime")
-        // }
-        return responce.json()
-       })
+      .then(
+        response => 
+        response.json().then(data => ({
+          responseData: data,
+            status: response.status
+        })
+      ))
       .then((data) => {
-       // console.log(data);
-        const status = data["status"];
-        const message = data["message"];
+        console.log(data);
+        const status = data.status;
+        const loginResponse =  data.responseData;
+        //console.log(status, loginResponse);
 
-        if (status === 404 || status === 406) {
-          setError(message);
+        if (status === 404) {
+          setError("Not a registered user, please signup");
           setSuccessMsg(null);
         }
-        if (status === 202) {
+        if (status === 406) {
+          setError("username and password combination is incorrect");
+          setSuccessMsg(null);
+        }
+        if (status === 200) {
           setError(null);
-          setSuccessMsg(message);
+          setSuccessMsg("Login Successful");
           const timer = setTimeout(()=>{
             setSuccessMsg(null);
 
-            authCtx.login(emailInput);
+            authCtx.login(loginResponse);
             history.push("/");
 
             clearTimeout(timer);

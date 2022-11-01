@@ -3,19 +3,29 @@ import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import { getTopRatedMobilesLink } from "../../url/Url";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import AppAuthContext from "../../context/app-auth-context";
 
 const TopRatedSmartphones = (props) => {
   const [fetchTopMobiles, setFetchTopMobiles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(null);
   const imageResourceUrl = "https://drive.google.com/uc?export=view&id=";
+  const authCtx = useContext(AppAuthContext);
+
   useEffect(() => {
     const fetchMobiles = async () => {
       setIsLoading(true);
-      const response = await fetch(getTopRatedMobilesLink);
+      const response = await fetch(getTopRatedMobilesLink, {
+        method : "GET",
+        headers : {
+          "Access-Control-Allow-Origin":"*",
+          "Authorization" : authCtx.token
+        }
+      });
 
       if (!response.ok) {
-        throw new Error("something went wrong");
+       // throw new Error("something went wrong");
       }
 
       const data = await response.json();
@@ -35,7 +45,7 @@ const TopRatedSmartphones = (props) => {
       setIsError(error.message);
       setIsLoading(false);
     }
-  }, []);
+  }, [authCtx.token]);
 
   if(isLoading){
       return <div className={classes.loadingDiv}>
@@ -53,22 +63,22 @@ const TopRatedSmartphones = (props) => {
           {
             fetchTopMobiles.map(item=> {
                 return <Link
-                key={item.itemId}
+                key={item.productId}
                 className={classes.logoLink}
                 to={{
                   pathname: "/item-detail",
                   state: {
-                    itemId:item.itemId
+                    productId:item.productId
                   },
                 }}
               >
                   <div className={classes.linkDes}>
                 <img
-                  src={imageResourceUrl + item.itemImageUrl}
+                  src={imageResourceUrl + item.imageUrl}
                   alt="logo"
                   className={classes.logo}
                 />
-                <p>{item.itemName}</p>
+                <p>{item.productName}</p>
                 </div>
               </Link>
             })

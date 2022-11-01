@@ -10,7 +10,7 @@ const UserOrderPage = () => {
   if(!authCtx.isLoggedIn){
     history.push("/login");
   }
-  const loggedInUser = authCtx.token["loginCookieForEcommerce"];
+  const loggedInUser = authCtx.userEmail;
 
   const [fetchedOrders, setFetchedOrders] = useState([]);
   const [isLoading,setIsLoading] = useState(false);
@@ -25,7 +25,8 @@ const UserOrderPage = () => {
       const response = await fetch(
         `${ userOrdersLink +loggedInUser}`,{
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : authCtx.token
           }
         }
       );
@@ -50,7 +51,7 @@ const UserOrderPage = () => {
       setFetchedOrders([]);
       setIsLoading(false);
     }
-  }, [loggedInUser]);
+  }, [loggedInUser, authCtx.token]);
 
   if(isLoading){
     return (
@@ -72,18 +73,18 @@ const UserOrderPage = () => {
                 <p>Ordered On: {order.orderTime}</p>
                 <p>Order Amount: &#8377; {order.orderAmount}</p>
               </div>
-              {order.orderItems.map((oItem) => {
+              {order.orderProducts.map((oItem) => {
                 return (
-                  <div key={oItem.orderItemId}>
+                  <div key={oItem.productId}>
                     <div className={classes.orderItemDiv}>
                       <img
-                        src={imageResourceUrl + oItem.orderItemImageUrl}
+                        src={imageResourceUrl + oItem.productImageUrl}
                         className={classes.orderItemImg}
                         alt="order item"
                       />
-                      <p>{oItem.orderItemName}</p>
-                      <p> &#8377; {oItem.orderItemPrice} </p>
-                      <p>Quantity: {oItem.orderItemQuantity} </p>
+                      <p>{oItem.productName}</p>
+                      <p> &#8377; {oItem.productPrice} </p>
+                      <p>Quantity: {oItem.productQuantity} </p>
                     </div>
                     <div>
                         

@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import ItemCard from "../Item/ItemCard";
 import Loader from "react-loader-spinner";
 import { ItemsBySubCategoriesLink } from "../../url/Url";
+import AppAuthContext from "../../context/app-auth-context";
 
 const ItemsBySubCategories = (props) => {
   const location = useLocation();
@@ -17,6 +18,7 @@ const ItemsBySubCategories = (props) => {
   const subCategoryName = params.subCategoryName;
   const [isLoading,setIsLoading] = useState(false);
   const [fetchedItems, setFetchedItems] = useState([]);
+  const authCtx = useContext(AppAuthContext);
 
   useEffect(() => {
     setIsLoading(true);
@@ -25,7 +27,8 @@ const ItemsBySubCategories = (props) => {
         `${ItemsBySubCategoriesLink+ categoryName}/${subCategoryName}`,
         {
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : authCtx.token
           }
         }
       );
@@ -48,7 +51,7 @@ const ItemsBySubCategories = (props) => {
       setIsLoading(false);
       console.log(error.message);
     }
-  }, [categoryName, subCategoryName]);
+  }, [categoryName, subCategoryName, authCtx.token]);
 
   if(isLoading){
     return <div style={{textAlign:"center"}}>
@@ -64,7 +67,7 @@ const ItemsBySubCategories = (props) => {
   return (
     <div>
       {fetchedItems.map((item) => {
-        return <ItemCard key={item.itemId} item={item} />;
+        return <ItemCard key={item.productId} item={item} />;
       })}
     </div>
   );

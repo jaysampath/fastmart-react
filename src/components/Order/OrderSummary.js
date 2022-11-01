@@ -10,7 +10,7 @@ import { FetchCartData } from "../../redux/CartActions";
 
 const OrderSummary = (props) => {
   const appAuthCtx = useContext(AppAuthContext);
-  const loggedInUser = appAuthCtx.token["loginCookieForEcommerce"];
+  const loggedInUser = appAuthCtx.userEmail;
   const [isSending, setIsSending] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(null);
@@ -38,16 +38,16 @@ const OrderSummary = (props) => {
   let orderItemsData = [];
   orderItems.map((ite) => {
     orderItemsData.push({
-      orderItemId: ite.itemId,
-      orderItemName: ite.itemName,
-      orderItemQuantity: ite.itemQuantity,
+      productId: ite.productId,
+      productName: ite.productName,
+      productQuantity: ite.quantity,
     });
     return 0;
   });
 
   const orderAddressData = {
-    name: orderAddress.orderCustomerName,
-    mobileNumber: orderAddress.orderCustomerMobile,
+    customerName: orderAddress.orderCustomerName,
+    customerMobile: orderAddress.orderCustomerMobile,
     address: orderAddress.orderCustomerAddress,
     city: orderAddress.orderCustomerCity,
     state: orderAddress.orderCustomerState,
@@ -64,17 +64,19 @@ const OrderSummary = (props) => {
         userEmail: loggedInUser,
         orderTime: new Date().toLocaleString(),
         orderAmount: orderAmount,
-        orderItems: orderItemsData,
+        orderProducts: orderItemsData,
         orderAddress: orderAddressData,
       }),
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin":"*"
+        "Access-Control-Allow-Origin":"*",
+        "Authorization" : appAuthCtx.token
       },
     })
       .then((response) => {
         if (!response.ok) {
           setIsSending(false);
+          setIsSuccess(null);
           setIsError("Couldn't place order. please try again");
         }
         return response.json();
@@ -87,6 +89,7 @@ const OrderSummary = (props) => {
       })
       .catch((error) => {
         setIsError("Couldn't place order. please try again after sometime");
+        setIsSuccess(null);
         setIsSending(false);
       });
   };
@@ -102,7 +105,7 @@ const OrderSummary = (props) => {
 
   if (isSuccess) {
 
-    dispatch(FetchCartData(loggedInUser));
+    dispatch(FetchCartData(loggedInUser, appAuthCtx.token));
 
     return (
       <div className={classes.successDiv}>
@@ -127,26 +130,26 @@ const OrderSummary = (props) => {
         <h2 style={{marginLeft:"1rem"}}>Order Items</h2>
         {orderItems.map((item) => {
           return (
-            <li className={classes.orderItem} key={item.itemId}>
+            <li className={classes.orderItem} key={item.productId}>
               <div className={classes.imageDiv}>
                 <div className={classes.imageLink}>
                   <img
                     className={classes.image}
-                    src={imageResourceUrl + item.itemImageUrl}
+                    src={imageResourceUrl + item.imageUrl}
                     alt="item"
                   />
                 </div>
               </div>
 
               <div className={classes.detailsDiv}>
-                <p className={classes.cartItemTitle}>{item.itemName}</p>
-                <p className={classes.price}> &#8377; {item.itemPrice}</p>
+                <p className={classes.cartItemTitle}>{item.productName}</p>
+                <p className={classes.price}> &#8377; {item.price}</p>
               </div>
 
               <div>
                 Quantity:
                 <span className={classes.itemQuantitySpan}>
-                  {item.itemQuantity}
+                  {item.quantity}
                 </span>
               </div>
 

@@ -11,11 +11,11 @@ const Cart = (props) => {
   let orderItemsToCheckOut = [];
   cartItems.map((ite) => {
     orderItemsToCheckOut.push({
-      itemId: ite.itemId,
-      itemImageUrl: ite.itemImageUrl,
-      itemPrice: ite.itemPrice,
-      itemQuantity: ite.itemQuantity,
-      itemName: ite.itemName,
+      productId: ite.productId,
+      imageUrl: ite.productImageUrl,
+      price: ite.productPrice,
+      quantity: ite.productQuantity,
+      productName: ite.productName,
     });
     return 0;
   });
@@ -37,7 +37,7 @@ const Cart = (props) => {
       </div>
 
       {cartItems.map((tempItem) => (
-        <CartItem key={tempItem["itemId"]} cartItem={tempItem} />
+        <CartItem key={tempItem["productId"]} cartItem={tempItem} />
       ))}
 
       {totalQuantity < 1 && (

@@ -14,20 +14,20 @@ const ItemCard = (props) => {
         to={{
           pathname: "/item-detail",
           state: {
-            itemId: props.item.itemId,
+            productId: props.item.productId,
           },
         }}
       >
         <img
           className={classes.image}
-          src={imageResourceUrl + props.item.itemImageUrl}
+          src={imageResourceUrl + props.item.imageUrl}
           alt="item"
         />
       </Link>
 
       <div className={classes.detail}>
-        <h3>{props.item.itemName}</h3>
-        <p> &#8377; {props.item.itemPrice}</p>
+        <h3>{props.item.productName}</h3>
+        <p> &#8377; {props.item.price}</p>
       </div>
     </div>
   );

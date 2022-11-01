@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import PaginationForReviews from "../UI/PaginationForReviews";
 import Loader from "react-loader-spinner";
 import { itemAllReviewsLink } from "../../url/Url";
+import { useContext } from "react";
+import AppAuthContext from "../../context/app-auth-context";
 
 const ItemAllReviews = () => {
 
@@ -15,6 +17,7 @@ const ItemAllReviews = () => {
     }
     const itemId = params.itemId;
     const itemName = params.itemName;
+    const authCtx = useContext(AppAuthContext);
     const [error,setError] = useState(null);
     const [isLoading,setIsLoading] = useState(false);
 
@@ -25,7 +28,8 @@ const ItemAllReviews = () => {
             setIsLoading(true);
             const response = await fetch(`${itemAllReviewsLink+ itemId}`,{
                 headers:{
-                    "Access-Control-Allow-Origin":"*"
+                    "Access-Control-Allow-Origin":"*",
+                    "Authorization" : authCtx.token
                 }
             });
             if(!response.ok){
@@ -51,7 +55,7 @@ const ItemAllReviews = () => {
                 setFetchedReviews([]);
                 setIsLoading(false);
         }
-    },[itemId])
+    },[itemId, authCtx.token])
 
     if(error){
         return <p>{error}</p>;

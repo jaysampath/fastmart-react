@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 import AddNewReview from "./AddNewReview";
 import Loader from "react-loader-spinner";
 import { itemTopReviewsLink } from "../../url/Url";
+import { useContext } from "react";
+import AppAuthContext from "../../context/app-auth-context";
+
 const ItemTopReviews = (props) => {
-  const itemId = props.itemId;
-  const itemName = props.itemName;
-  const itemRating = props.itemRating;
-  const itemNumRatings = props.itemNumRatings;
+  const itemId = props.productId;
+  const itemName = props.productName;
+  const itemRating = props.rating;
+  const itemNumRatings = props.numRatings;
+  const authCtx = useContext(AppAuthContext);
 
   const [isLoading, setIsLoading] = useState(false);
   const [fetchItemTopReviews, setFetchItemTopReviews] = useState([]);
@@ -20,8 +24,12 @@ const ItemTopReviews = (props) => {
       }
       setIsLoading(true);
       const response = await fetch(
-        `${itemTopReviewsLink+ itemId}`,{
-          "Access-Control-Allow-Origin":"*"
+        `${itemTopReviewsLink+ itemId}`, {
+          method : "GET",
+          headers : {
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : authCtx.token
+          }
         }
       );
       if (!response.ok) {
@@ -44,7 +52,7 @@ const ItemTopReviews = (props) => {
       setIsLoading(false);
       setFetchItemTopReviews([]);
     }
-  }, [itemId]);
+  }, [itemId, authCtx.token]);
 
   const addReviewHandler = () => {
     setShowAddReview(true);
@@ -91,7 +99,7 @@ const ItemTopReviews = (props) => {
 
       {fetchItemTopReviews.map((review) => {
         return (
-          <div key={review.id} className={classes.review}>
+          <div key={review.reviewId} className={classes.review}>
             <div className={classes.titleDiv}>
               <h3>{review.userEmail}</h3>
               <h4>

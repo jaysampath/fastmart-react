@@ -1,7 +1,7 @@
 import { cartActions } from "./CartSlice";
 import {  fetchUserCartLink,  addItemToCartLink,  addItemQuantityInCartLink,  reduceItemQuantityInCartLink,  deleteItemFromCartLink,} from "../url/Url";
 
-export const FetchCartData = (loggedInUser) => {
+export const FetchCartData = (loggedInUser, token) => {
   //console.log(loggedInUser);
 
   return async (dispatch) => {
@@ -9,7 +9,8 @@ export const FetchCartData = (loggedInUser) => {
       const response = await fetch(
         `${ fetchUserCartLink +loggedInUser}`,{
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : token
           }
         }
       );
@@ -27,8 +28,8 @@ export const FetchCartData = (loggedInUser) => {
       const cartData = await fetchCart();
 
       let totalQuan = 0;
-      cartData.cartItems.map((ite) => {
-        totalQuan = totalQuan + ite.itemQuantity;
+      cartData.cartProducts.map((ite) => {
+        totalQuan = totalQuan + ite.productQuantity;
         return 0;
       });
 
@@ -36,9 +37,9 @@ export const FetchCartData = (loggedInUser) => {
 
       dispatch(
         cartActions.replaceCart({
-          items: cartData.cartItems || [],
+          items: cartData.cartProducts || [],
           cartAmount: cartData.cartAmount,
-          numItems: cartData.cartItems.length,
+          numItems: cartData.cartProducts.length,
           totalQuantity: totalQuan,
         })
       );
@@ -48,7 +49,7 @@ export const FetchCartData = (loggedInUser) => {
   };
 };
 
-export const addItemToCart = (itemId, itemQuantity, userEmail) => {
+export const addItemToCart = (itemId, itemQuantity, userEmail, token) => {
   return async (dispatch) => {
     const addItem = async () => {
       const response = await fetch(
@@ -56,12 +57,13 @@ export const addItemToCart = (itemId, itemQuantity, userEmail) => {
         {
           method: "POST",
           body: JSON.stringify({
-            itemId: itemId,
-            itemQuantity: itemQuantity,
+            productId: itemId,
+            productQuantity: itemQuantity,
           }),
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : token
           },
         }
       );
@@ -82,7 +84,7 @@ export const addItemToCart = (itemId, itemQuantity, userEmail) => {
 
       let totalQuan = 0;
       responseData.cartItems.map((ite) => {
-        totalQuan = totalQuan + ite.itemQuantity;
+        totalQuan = totalQuan + ite.productQuantity;
         return 0;
       });
 
@@ -90,9 +92,9 @@ export const addItemToCart = (itemId, itemQuantity, userEmail) => {
 
       dispatch(
         cartActions.addItemToCart({
-          items: responseData.cartItems,
+          items: responseData.cartProducts,
           cartValue: responseData.cartAmount,
-          numItems: responseData.cartItems.length,
+          numItems: responseData.cartProducts.length,
           totalQuantity: totalQuan,
         })
       );
@@ -100,7 +102,7 @@ export const addItemToCart = (itemId, itemQuantity, userEmail) => {
   };
 };
 
-export const addItemQuantityInCart = (loggedInUser, itemId) => {
+export const addItemQuantityInCart = (loggedInUser, itemId, token) => {
   return async (dispatch) => {
     const addItemQuantity = async () => {
       const response = await fetch(
@@ -108,7 +110,8 @@ export const addItemQuantityInCart = (loggedInUser, itemId) => {
         {
           method: "POST",
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : token
           }
         }
       );
@@ -125,8 +128,8 @@ export const addItemQuantityInCart = (loggedInUser, itemId) => {
       const cartData = await addItemQuantity();
 
       let totalQuan = 0;
-      cartData.cartItems.map((ite) => {
-        totalQuan = totalQuan + ite.itemQuantity;
+      cartData.cartProducts.map((ite) => {
+        totalQuan = totalQuan + ite.productQuantity;
         return 0;
       });
 
@@ -134,9 +137,9 @@ export const addItemQuantityInCart = (loggedInUser, itemId) => {
 
       dispatch(
         cartActions.addItemQuantityInCart({
-          items: cartData.cartItems,
+          items: cartData.cartProducts,
           cartValue: cartData.cartAmount,
-          numItems: cartData.cartItems.length,
+          numItems: cartData.cartProducts.length,
           totalQuantity: totalQuan,
         })
       );
@@ -144,7 +147,7 @@ export const addItemQuantityInCart = (loggedInUser, itemId) => {
   };
 };
 
-export const reduceItemQuantityInCart = (loggedInUser, itemId) => {
+export const reduceItemQuantityInCart = (loggedInUser, itemId, token) => {
   return async (dispatch) => {
     const reduceItemQuantity = async () => {
       const response = await fetch(
@@ -152,7 +155,8 @@ export const reduceItemQuantityInCart = (loggedInUser, itemId) => {
         {
           method: "POST",
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : token
           }
         }
       );
@@ -169,8 +173,8 @@ export const reduceItemQuantityInCart = (loggedInUser, itemId) => {
       const cartData = await reduceItemQuantity();
 
       let totalQuan = 0;
-      cartData.cartItems.map((ite) => {
-        totalQuan = totalQuan + ite.itemQuantity;
+      cartData.cartProducts.map((ite) => {
+        totalQuan = totalQuan + ite.productQuantity;
         return 0;
       });
 
@@ -178,9 +182,9 @@ export const reduceItemQuantityInCart = (loggedInUser, itemId) => {
 
       dispatch(
         cartActions.addItemQuantityInCart({
-          items: cartData.cartItems,
+          items: cartData.cartProducts,
           cartValue: cartData.cartAmount,
-          numItems: cartData.cartItems.length,
+          numItems: cartData.cartProducts.length,
           totalQuantity: totalQuan,
         })
       );
@@ -188,7 +192,7 @@ export const reduceItemQuantityInCart = (loggedInUser, itemId) => {
   };
 };
 
-export const deleteItemFromCart = (loggedInUser, itemId) => {
+export const deleteItemFromCart = (loggedInUser, itemId, token) => {
   return async (dispatch) => {
     const deleteItem = async () => {
       const response = await fetch(
@@ -196,7 +200,8 @@ export const deleteItemFromCart = (loggedInUser, itemId) => {
         {
           method: "POST",
           headers:{
-            "Access-Control-Allow-Origin":"*"
+            "Access-Control-Allow-Origin":"*",
+            "Authorization" : token
           }
         }
       );
@@ -213,8 +218,8 @@ export const deleteItemFromCart = (loggedInUser, itemId) => {
       const cartData = await deleteItem();
 
       let totalQuan = 0;
-      cartData.cartItems.map((ite) => {
-        totalQuan = totalQuan + ite.itemQuantity;
+      cartData.cartProducts.map((ite) => {
+        totalQuan = totalQuan + ite.productQuantity;
         return 0;
       });
 
@@ -222,9 +227,9 @@ export const deleteItemFromCart = (loggedInUser, itemId) => {
 
       dispatch(
         cartActions.deleteItemFromCart({
-          items: cartData.cartItems,
+          items: cartData.cartProducts,
           cartValue: cartData.cartAmount,
-          numItems: cartData.cartItems.length,
+          numItems: cartData.cartProducts.length,
           totalQuantity: totalQuan,
         })
       );
