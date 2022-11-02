@@ -42,9 +42,15 @@ const UpdatePassword = () => {
     }
     setError(null);
     setIsUpdating(true);
-    fetch(`${updatePasswordLink+ email}/${passwordInput}`,{
+    fetch(updatePasswordLink,{
+      method : "POST",
+      body: JSON.stringify({
+        "userEmail" : email,
+        "newPassword" : passwordInput
+      }),
       headers:{
-        "Access-Control-Allow-Origin":"*"
+        "Access-Control-Allow-Origin":"*",
+        "Content-Type": "application/json"
       }
     })
       .then((response) => {
@@ -53,7 +59,7 @@ const UpdatePassword = () => {
             "error while updating password, please try again after sometime"
           );
         }
-        return response.json();
+        return response.ok;
       })
       .then((data) => {
         //console.log(data);

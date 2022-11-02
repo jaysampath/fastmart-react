@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className={classes.footer}>
       <hr />
       <div className={classes.actionsDiv}>
-        <p> &#169; 2021, FastMart </p>
+        <p> &#169; 2022, FastMart </p>
         <p>
           <a
             href="https://jaysampath.github.io/"

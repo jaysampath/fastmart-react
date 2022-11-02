@@ -17,7 +17,6 @@ const ForgotPassword = () => {
   };
 
   const cancelButtonHandler = () => {
-    //window.location.href = "http://localhost:3000/login";
     history.push("/login");
   };
 
@@ -35,7 +34,7 @@ const ForgotPassword = () => {
         if (data.status === 202) {
           setError("you are not a registered user. please signup");
         }
-        if (data.status === 406) {
+        if (data.status === 404) {
           history.push({
             pathname: "/otp",
             state: {
