@@ -33,13 +33,8 @@ const Header = (props) => {
             <li>
               <HeaderCartButton />
             </li>
-
+           {appAuthCtx.isLoggedIn ? (
             <li>
-              {/* <Link to="/user-account" className={classes.dropdown}> */}
-              {/* Your Account */}
-              {/* <span className="material-icons-outlined">account_circl e</span> */}
-              {/* <MaterialIcon icon="account_circle" size={33} color="white"  />
-              </Link> */}
               <div className={classes.dropdown}>
                 <MaterialIcon icon="account_circle" size={33} color="white" />
                 <div className={classes.dropdownContent}>
@@ -54,12 +49,7 @@ const Header = (props) => {
                 </div>
               </div>
             </li>
-
-            {/* <li>
-              <button onClick={logoutHandler} className={classes.logout}>
-                Logout
-              </button>
-            </li> */}
+           ) : null}
           </ul>
         </nav>
       </header>
