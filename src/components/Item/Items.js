@@ -35,14 +35,14 @@ const Items = (props) => {
 
     try {
       fetchItems().catch((error) => {
-        console.log(error);
+        //console.log(error);
         setError(error.message);
         setIsLoading(false);
       });
     } catch (error) {
       setIsLoading(false);
       setError(error.message);
-      console.log(error.message);
+      //console.log(error.message);
     }
   }, [authCtx.token]);
 

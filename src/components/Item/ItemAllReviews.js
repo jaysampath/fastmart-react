@@ -44,13 +44,13 @@ const ItemAllReviews = () => {
 
         try {
             fetchAllReviews().catch(error => {
-                console.log(error);
+               // console.log(error);
                 setError(error.message);
                 setFetchedReviews([]);
                 setIsLoading(false);
             })
         } catch (error) {
-            console.log(error.message);
+                //console.log(error.message);
                 setError(error.message);
                 setFetchedReviews([]);
                 setIsLoading(false);

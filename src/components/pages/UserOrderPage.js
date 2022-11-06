@@ -42,12 +42,12 @@ const UserOrderPage = () => {
     };
     try {
       fetchUserOrder().catch((error) => { 
-        console.log(error) 
+       // console.log(error) 
         setFetchedOrders([]);
         setIsLoading(false);
       });
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       setFetchedOrders([]);
       setIsLoading(false);
     }

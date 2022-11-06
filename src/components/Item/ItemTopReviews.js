@@ -43,12 +43,12 @@ const ItemTopReviews = (props) => {
 
     try {
       fetchItemTopReviews().catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
         setIsLoading(false);
         setFetchItemTopReviews([]);
       });
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       setIsLoading(false);
       setFetchItemTopReviews([]);
     }

@@ -77,7 +77,7 @@ const UpdatePassword = () => {
         }, 500);
       })
       .catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
         setError(error.message);
         setIsUpdating(false);
       });

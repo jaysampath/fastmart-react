@@ -8,10 +8,12 @@ const Signup = (props) => {
   const [passwordInput, setPasswordInput] = useState("");
   const [usernameInput, setUsernameInput] = useState("");
   const [confirmPasswordInput, setConfirmPasswordInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [successMsg, setSuccessMsg] = useState(null);
   const history = useHistory();
   const authCtx = useContext(AppAuthContext);
+
   if(authCtx.isLoggedIn){
     history.push("/");
   }
@@ -51,12 +53,12 @@ const Signup = (props) => {
 
     if (passwordInput.length<8) {
       setError(
-        "please check your password. It should be atleast 8 chars long"
+        "Password should be atleast 8 chars long"
       );
       return;
     }
     setError(null);
-
+    setIsLoading(true);
     fetch(`${checkExistingUserLink + emailInput}`, {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -65,8 +67,9 @@ const Signup = (props) => {
       .then((response) => response.json())
       .then((data) => {
         //console.log(data);
+        setIsLoading(false);
         if (data.status === 404) {
-          setError(data.message);
+          setError("Email already registered. Please login with the same.");
           setSuccessMsg(null);
         }
         if (data.status === 202) {
@@ -84,6 +87,7 @@ const Signup = (props) => {
       })
       .catch((error) => {
         setError(error.message);
+        setIsLoading(false);
       });
   };
 
@@ -128,7 +132,7 @@ const Signup = (props) => {
               onChange={confrimPasswordInputHandler}
             />
 
-            <button className={classes.button} type="submit">
+            <button className={classes.button} type="submit" disabled={isLoading}>
               Signup
             </button>
             <Link to="/login" className={classes.loginLink}>

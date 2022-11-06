@@ -36,12 +36,12 @@ const TopRatedSmartphones = (props) => {
 
     try {
       fetchMobiles().catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
         setIsError(error.message);
         setIsLoading(false);
       });
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       setIsError(error.message);
       setIsLoading(false);
     }

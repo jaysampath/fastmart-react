@@ -18,7 +18,7 @@ const ItemDetail = (props) => {
   const params = location.state;
   const history = useHistory();
   if (!params) {
-    console.log("inside check")
+    //console.log("inside check")
     history.goBack();
   }
 
@@ -53,13 +53,13 @@ const ItemDetail = (props) => {
 
     try {
       fetchItemById().catch((error) => {
-        console.log(error);
+        //console.log(error);
         setError(error.message);
         setFetchedItem({});
         setIsLoading(false);
       });
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
       setError(error.message);
       setFetchedItem({});
       setIsLoading(false);

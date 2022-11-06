@@ -48,13 +48,13 @@ const SearchResults = (props) => {
     };
     try {
       fetchSearchItems().catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
         setIsFetched(false);
         setIsError(error.message);
         setFetchedResults([]);
       });
     } catch (error) {
-      console.log(error.message);
+     // console.log(error.message);
       setIsFetched(false);
       setIsError(error.message);
       setFetchedResults([]);

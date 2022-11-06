@@ -6,6 +6,7 @@ import { loginLink } from "../../url/Url";
 const Login = (props) => {
   const [emailInput, setEmailInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccessMsg] = useState(null);
   const history = useHistory();
@@ -31,6 +32,7 @@ const Login = (props) => {
       return;
     }
     setError(null);
+    setIsLoading(true);
     fetch(loginLink, {
       method: "POST",
       body: JSON.stringify({
@@ -50,7 +52,8 @@ const Login = (props) => {
         })
       ))
       .then((data) => {
-        console.log(data);
+        //console.log(data);
+        setIsLoading(false);
         const status = data.status;
         const loginResponse =  data.responseData;
         //console.log(status, loginResponse);
@@ -78,6 +81,7 @@ const Login = (props) => {
       })
       .catch((error) => {
         setError(error.message);
+        setIsLoading(false);
         console.log(error.message);
       });
   };
@@ -107,8 +111,8 @@ const Login = (props) => {
               onChange={passwordInputHandler}
             />
 
-            <button className={classes.button} type="submit">
-              Login
+            <button className={classes.button} type="submit" disabled={isLoading}>
+              {isLoading ? "Logging in..." : "Login"}
             </button>
             <div className={classes.forgotDiv}>
               <Link to="/forgot" className={classes.forgotLink}>

@@ -44,7 +44,7 @@ export const FetchCartData = (loggedInUser, token) => {
         })
       );
     } catch (error) {
-      console.log(error.message);
+      //console.log(error.message);
     }
   };
 };

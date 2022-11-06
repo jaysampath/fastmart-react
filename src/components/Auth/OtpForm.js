@@ -97,7 +97,7 @@ const OtpForm = (props) => {
         // console.log("signup response", data);
         const status = data.status;
         const signupResponse = data.responseData;
-        console.log(status, signupResponse);
+        //console.log(status, signupResponse);
         if (status === 404) {
           setError("Email is already registered, please login with the same.");
         } else {
@@ -120,7 +120,7 @@ const OtpForm = (props) => {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
         setError(error.message);
       });
   };
@@ -163,7 +163,7 @@ const OtpForm = (props) => {
         }
       })
       .catch((error) => {
-        console.log(error.message);
+        //console.log(error.message);
         setIsValidatingOtp(false);
       });
   };

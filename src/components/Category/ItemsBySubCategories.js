@@ -46,10 +46,11 @@ const ItemsBySubCategories = (props) => {
     try {
       fetchSubCategoryItems().catch((error) =>{
         setIsLoading(false);
-        console.log(error) });
+        //console.log(error);
+       });
     } catch (error) {
       setIsLoading(false);
-      console.log(error.message);
+      //console.log(error.message);
     }
   }, [categoryName, subCategoryName, authCtx.token]);
 
