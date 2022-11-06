@@ -8,7 +8,7 @@ const Footer = () => {
         <p> &#169; 2022, FastMart </p>
         <p>
           <a
-            href="https://jaysampath.github.io/"
+            href="https://sampath-portfolio.vercel.app/"
             target="_blank"
             className={classes.link}
             rel="noreferrer"
