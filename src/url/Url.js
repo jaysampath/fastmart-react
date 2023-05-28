@@ -1,5 +1,4 @@
-const baseUrl = "https://fastmart-backend.herokuapp.com";
-//const baseUrl = "http://localhost:8080";
+const baseUrl = "https://fastmart-backend.onrender.com";
 
 export const validateTokenLink = baseUrl + "/user/validate/token";
 
