@@ -133,7 +133,7 @@ const Signup = (props) => {
             />
 
             <button className={classes.button} type="submit" disabled={isLoading}>
-              Signup
+              {isLoading ? "Please wait while this signup request awake the backend instance..." : "Signup"}
             </button>
             <Link to="/login" className={classes.loginLink}>
               Already a user? Login here

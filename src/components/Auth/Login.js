@@ -112,7 +112,7 @@ const Login = (props) => {
             />
 
             <button className={classes.button} type="submit" disabled={isLoading}>
-              {isLoading ? "Logging in..." : "Login"}
+              {isLoading ? "Please wait while this login request awake the backend instance..." : "Login"}
             </button>
             <div className={classes.forgotDiv}>
               <Link to="/forgot" className={classes.forgotLink}>
